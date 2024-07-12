@@ -1,0 +1,17 @@
+// required to get $orange variable
+@import '../../vendor/twbs/bootstrap/scss/functions';
+@import '../../vendor/twbs/bootstrap/scss/variables';
+
+
+$red: #e91920;
+$primary: $orange; // set the $primary variable
+
+// merge with existing $theme-colors map
+$theme-colors: map-merge($theme-colors, (
+  "primary": $primary
+));
+body {
+  background: $red;
+}
+
+@import '../../vendor/twbs/bootstrap/scss/bootstrap';

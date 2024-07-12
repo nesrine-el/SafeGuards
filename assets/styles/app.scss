@@ -1,17 +1,19 @@
-// required to get $orange variable
+//REGLES:  faire son code dans le fichier correspondant, si vous créer un nouveau fichier,
+// oubliez pas d'importer le fichier ici.
+// Le CSS doit être compiler : 
+// lancer la commande : php bin/console sass:build --watch 
+// pour que les modifs que vous faites soient prises en compte
 @import '../../vendor/twbs/bootstrap/scss/functions';
 @import '../../vendor/twbs/bootstrap/scss/variables';
 
+@import 'variables';
 
-$red: #e91920;
-$primary: $orange; // set the $primary variable
 
-// merge with existing $theme-colors map
+
+// on peut customiser d'autres variables de bootstrap, mais faut les réinitialiser ici.
 $theme-colors: map-merge($theme-colors, (
-  "primary": $primary
+  "primary": $primary,
+  "secondary": $secondary
 ));
-body {
-  background: $red;
-}
 
 @import '../../vendor/twbs/bootstrap/scss/bootstrap';

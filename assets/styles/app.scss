@@ -9,7 +9,6 @@
 @import 'variables';
 
 
-
 // on peut customiser d'autres variables de bootstrap, mais faut les réinitialiser ici.
 $theme-colors: map-merge($theme-colors, (
   "primary": $primary,

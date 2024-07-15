@@ -10,4 +10,7 @@
 import './styles/app.scss';
 
 
+// pour le js de bootstrap, importer les composants utilisés !
+import { Dropdown } from 'bootstrap';
+
 console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉');

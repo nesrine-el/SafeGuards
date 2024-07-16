@@ -14,6 +14,7 @@
 
 
 // block
+#map { height: 500px; width: 500px; align-items: center; }
 
 // on peut customiser d'autres variables de bootstrap, mais faut les réinitialiser ici.
 $theme-colors: map-merge($theme-colors, (

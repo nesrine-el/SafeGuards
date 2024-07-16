@@ -3,18 +3,35 @@
 // Le CSS doit être compiler : 
 // lancer la commande : php bin/console sass:build --watch 
 // pour que les modifs que vous faites soient prises en compte
+// variables
+@import './color/variables.scss';
+@import './color/background.scss';
+@import './fonts.scss';
+
+
 @import '../../vendor/twbs/bootstrap/scss/functions';
 @import '../../vendor/twbs/bootstrap/scss/variables';
 
-@import 'variables';
 @import 'article';
 
 
+// block
+#map { height: 500px; width: 500px; align-items: center; }
 
 // on peut customiser d'autres variables de bootstrap, mais faut les réinitialiser ici.
 $theme-colors: map-merge($theme-colors, (
   "primary": $primary,
-  "secondary": $secondary
+  "secondary": $secondary,
+
 ));
 
 @import '../../vendor/twbs/bootstrap/scss/bootstrap';
+
+
+// color des banières
+@import '../../vendor/twbs/bootstrap/scss/_utilities.scss';
+
+
+.bg-info_safeguards{
+  background-color: $blue !important;
+}

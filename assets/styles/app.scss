@@ -25,3 +25,11 @@ $theme-colors: map-merge($theme-colors, (
 
 @import '../../vendor/twbs/bootstrap/scss/bootstrap';
 
+
+// color des banières
+@import '../../vendor/twbs/bootstrap/scss/_utilities.scss';
+
+
+.bg-info_safeguards{
+  background-color: $blue !important;
+}

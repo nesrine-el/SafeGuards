@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ArticleController extends AbstractController
 {
-    #[Route('/articles', name: 'article_index')]
+    #[Route('/article', name: 'article_index')]
     public function index(ArticleRepository $articleRepository): Response
     {
         $articles = $articleRepository->findAll();

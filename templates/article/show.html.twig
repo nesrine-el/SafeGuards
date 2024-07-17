@@ -1,20 +1,27 @@
 {# templates/article/show.html.twig #}
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ article.title }}{% endblock %}
+{% block title %}Détail de l'Article{% endblock %}
 
 {% block body %}
 <div class="container">
-    <h1>{{ article.title }}</h1>
-    <div class="article-details">
+    <h1>Titre de l'Article</h1>
+    <div class="article-detail">
         <div class="image">
             <img src="{{ asset('images/' ~ article.image) }}" alt="{{ article.title }}">
         </div>
         <div class="content">
+            <h2>{{ article.title }}</h2>
             <p>{{ article.content }}</p>
-            <p>Publié le {{ article.createdAt|date('d/m/Y') }} à {{ article.location }}</p>
+            <div class="actions">
+                <a href="#" class="icon-star"></a>
+                <a href="#" class="icon-heart"></a>
+            </div>
+            <div class="buttons">
+                <button class="btn">Commenter</button>
+                <button class="btn">Contacter</button>
+            </div>
         </div>
     </div>
-    <a href="{{ path('article_index') }}" class="btn btn-primary">Retour à la liste des articles</a>
 </div>
 {% endblock %}

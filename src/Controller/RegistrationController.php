@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class RegistrationController extends AbstractController
 {
-    #[Route('/register_visitor', name: 'app_register_visitor')]
+    #[Route('/register_visitor', name: 'register_visitor')]
     public function registerVisitor(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
     {
         $user = new User();
@@ -45,7 +45,7 @@ class RegistrationController extends AbstractController
         ]);
     }
 
-    #[Route('/register_author', name: 'app_register_author')]
+    #[Route('/register_author', name: 'register_author')]
     public function registerAuthor(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
     {
         

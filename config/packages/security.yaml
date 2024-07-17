@@ -14,8 +14,7 @@ security:
         ROLE_ADMIN: ['ROLE_USER', 'ROLE_VISITOR', 'ROLE_AUTHOR'] 
         ROLE_VISITOR: ['ROLE_USER']
         ROLE_AUTHOR: ['ROLE_USER'] 
-        # make Login pour les accès des pages 
-        # faire deux registration , visitor and author 
+        
         # 'Voter' pour differencier les auteur les uns des autres 
     firewalls:
         dev:

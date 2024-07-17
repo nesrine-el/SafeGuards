@@ -18,6 +18,13 @@
 	</style>
 
 	<header>
+	{% if user != 'no_user' %}
+		{{ user.firstName }}
+	{% else %}
+		coucou
+	{% endif %}
+	
+	
 		<h1>
 			header
 		</h1>

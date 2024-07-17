@@ -17,14 +17,15 @@ class Comment
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $content = null;
 
-    #[ORM\Column]
-    private ?int $author_id = null;
-
-    #[ORM\Column]
-    private ?int $article_id = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $created_at = null;
+
+    #[ORM\ManyToOne(inversedBy: 'comments')]
+    private ?Article $article = null;
+
+    #[ORM\ManyToOne(inversedBy: 'comments')]
+    private ?User $user = null;
 
     public function getId(): ?int
     {
@@ -43,30 +44,6 @@ class Comment
         return $this;
     }
 
-    public function getAuthorId(): ?int
-    {
-        return $this->author_id;
-    }
-
-    public function setAuthorId(int $author_id): static
-    {
-        $this->author_id = $author_id;
-
-        return $this;
-    }
-
-    public function getArticleId(): ?int
-    {
-        return $this->article_id;
-    }
-
-    public function setArticleId(int $article_id): static
-    {
-        $this->article_id = $article_id;
-
-        return $this;
-    }
-
     public function getCreatedAt(): ?\DateTimeInterface
     {
         return $this->created_at;
@@ -75,6 +52,30 @@ class Comment
     public function setCreatedAt(\DateTimeInterface $created_at): static
     {
         $this->created_at = $created_at;
+
+        return $this;
+    }
+
+    public function getArticle(): ?Article
+    {
+        return $this->article;
+    }
+
+    public function setArticle(?Article $article): static
+    {
+        $this->article = $article;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): static
+    {
+        $this->user = $user;
 
         return $this;
     }

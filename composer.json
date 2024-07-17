@@ -32,7 +32,7 @@
         "twig/intl-extra": "^3.10",
         "twig/twig": "^2.12|^3.0"
     },
-    "require-dev": 
+    "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^3.6",
         "phpunit/phpunit": "^9.5",
         "symfony/browser-kit": "7.1.*",

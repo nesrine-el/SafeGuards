@@ -20,6 +20,7 @@
         "symfony/flex": "^2",
         "symfony/form": "7.1.*",
         "symfony/framework-bundle": "7.1.*",
+        "symfony/intl": "7.1.*",
         "symfony/runtime": "7.1.*",
         "symfony/security-bundle": "7.1.*",
         "symfony/twig-bundle": "7.1.*",
@@ -28,9 +29,10 @@
         "symfonycasts/sass-bundle": "^0.7.0",
         "twbs/bootstrap": "^5.3",
         "twig/extra-bundle": "^2.12|^3.0",
+        "twig/intl-extra": "^3.10",
         "twig/twig": "^2.12|^3.0"
     },
-    "require-dev": {
+    "require-dev": 
         "doctrine/doctrine-fixtures-bundle": "^3.6",
         "phpunit/phpunit": "^9.5",
         "symfony/browser-kit": "7.1.*",

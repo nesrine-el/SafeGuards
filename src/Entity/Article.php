@@ -21,22 +21,16 @@ class Article
     private ?string $content = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $images = null;
+    private ?string $image = null;
 
-    #[ORM\Column]
-    private ?int $author_id = null;
+    #[ORM\Column(nullable: true)]
+    private ?int $author = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $created_at = null;
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $createdAt = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $location = null;
-
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $profession = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $urlToken = null;
 
     public function getId(): ?int
     {
@@ -67,38 +61,38 @@ class Article
         return $this;
     }
 
-    public function getImages(): ?string
+    public function getImage(): ?string
     {
-        return $this->images;
+        return $this->image;
     }
 
-    public function setImages(?string $images): static
+    public function setImage(?string $image): static
     {
-        $this->images = $images;
+        $this->image = $image;
 
         return $this;
     }
 
-    public function getAuthorId(): ?int
+    public function getAuthor(): ?int
     {
-        return $this->author_id;
+        return $this->author;
     }
 
-    public function setAuthorId(int $author_id): static
+    public function setAuthor(?int $author): static
     {
-        $this->author_id = $author_id;
+        $this->author = $author;
 
         return $this;
     }
 
     public function getCreatedAt(): ?\DateTimeInterface
     {
-        return $this->created_at;
+        return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTimeInterface $created_at): static
+    public function setCreatedAt(?\DateTimeInterface $createdAt): static
     {
-        $this->created_at = $created_at;
+        $this->createdAt = $createdAt;
 
         return $this;
     }
@@ -111,30 +105,6 @@ class Article
     public function setLocation(?string $location): static
     {
         $this->location = $location;
-
-        return $this;
-    }
-
-    public function getProfession(): ?string
-    {
-        return $this->profession;
-    }
-
-    public function setProfession(?string $profession): static
-    {
-        $this->profession = $profession;
-
-        return $this;
-    }
-
-    public function getUrlToken(): ?string
-    {
-        return $this->urlToken;
-    }
-
-    public function setUrlToken(string $urlToken): static
-    {
-        $this->urlToken = $urlToken;
 
         return $this;
     }

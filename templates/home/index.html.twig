@@ -6,12 +6,8 @@
 {% block body %}
 
 	<header>
-	{% if user != 'no_user' %}
-		{{ user.firstName }}
-	{% else %}
-		coucou
-	{% endif %}
-	
+
+		{{ datas }}
 	
 		<h1>
 			header
@@ -25,5 +21,8 @@
 		<h2>liste articles les plus lus</h2>
 		<h2>liste articles les plus récent</h2>
 	</section>
-
+	<script>
+		var datas = {{ datas }};
+		console.log(datas);
+	</script>
 {% endblock %}

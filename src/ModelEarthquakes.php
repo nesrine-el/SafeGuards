@@ -1,5 +1,5 @@
 <?php 
-namespace App\ModelsML;
+namespace App;
 
 use PDO;
 
@@ -25,7 +25,7 @@ class ModelEarthquakes {
     // COLONNE À PRÉDIRE
     const COLUMN_TO_PREDICT     = 'mag * ' . self::MAG_MUL_COEFF;
     // TABLE SQL DANS LAQUELLE ALLER CHERCHER LES DATAS
-    const SQL_TABLENAME         = 'earthquakes';
+    const SQL_TABLENAME         = 'earthquake';
     // DOSSIER DE DESTINATION DES MODÈLES SAUVEGARDÉS
     const DIR_MODELS            = 'saved_models';
     // PRÉFIX À AJOUTER AUX NOMS DES MODÈLES LORS D'UN RENNOMAGE
@@ -105,7 +105,6 @@ class ModelEarthquakes {
         //CRÉATION DU MODÈLE DE MACHINE LEARNING DE TYPE GRADIENT BOOST
         $this->estimator = new PersistentModel(
             new GradientBoost(new RegressionTree(4), 0.1, 0.8, 1000, 10000, 10, 0.1),
-            //new GradientBoost(new RegressionTree(4), 0.1),
             new Filesystem(self::DIR_MODELS . '/' . $this->filename, true)
         );
         $this->estimator->setLogger($this->logger);  

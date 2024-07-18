@@ -1,17 +1,16 @@
 <?php
 require_once __DIR__ . '/vendor/autoload.php';
-require_once 'database.php';
 
-use App\ModelsML\ModelEarthquakes;
+use App\ModelEarthquakes;
 
 // CRÉE LE MODÈLE À ENTRAINER
-$model = new ModelEarthquakes(dbConnect());
+$model = new ModelEarthquakes(new PDO('mysql:dbname=SafeGuards;host=127.0.0.1', 'root', 'root'));
 
 // CHARGE LE MODÈLE SAUVEGARDÉ
 $model->loadSavedModel('earthquakes_model_66.rbx');
 
 // LANCE UNE PRÉDICTION AVEC latitude et longitude
-$value = $model->predict(59.9272,  -152.8161); // 59.9272 / -152.8161 attendu .5
+$value = $model->predict(159.9272,  152.8161); // 59.9272 / -152.8161 attendu .5
 echo "Notre I.A. a estimé qu'un séisme à ces coordonnées aurait une magnitude de $value (.5) sur l'echelle de Richter.\n";
 
 $value = $model->predict(19.373, -155.2764); // 19.373 / -155.2764 attendu 3.4

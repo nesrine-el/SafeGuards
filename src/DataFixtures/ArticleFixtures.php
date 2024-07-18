@@ -25,8 +25,7 @@ use App\Entity\ {
                 $comment->setUser( $authors[ 0 ] );
                 $manager->persist( $comment );
             }
-
-
+            
             foreach ( $articlesData as $data ) {
                 $idAuthor = \random_int( 0, $nbAuthor -1 )  ;
                 $article = new Article();

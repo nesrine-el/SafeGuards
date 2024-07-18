@@ -21,6 +21,9 @@ class Earthquake
     private ?string $latitude = null;
 
     #[ORM\Column(length: 255)]
+    private ?string $idToken = null;
+
+    #[ORM\Column(length: 255)]
     private ?string $longitude = null;
 
     #[ORM\Column(length: 255)]
@@ -120,6 +123,18 @@ class Earthquake
     public function setDepth(string $depth): static
     {
         $this->depth = $depth;
+
+        return $this;
+    }
+
+    public function getIdToken(): ?string
+    {
+        return $this->idToken;
+    }
+
+    public function setIdToken(string $idToken): static
+    {
+        $this->idToken = $idToken;
 
         return $this;
     }

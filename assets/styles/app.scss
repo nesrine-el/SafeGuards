@@ -12,8 +12,13 @@
 @import '../../vendor/twbs/bootstrap/scss/functions';
 @import '../../vendor/twbs/bootstrap/scss/variables';
 
-@import 'article';
+@import './article/article.scss';
+@import './block/navbar.scss';
+@import './block/footer.scss';
 
+body {
+  background-color: $dark-blue !important; margin: 0; padding: 0;
+}
 
 // block
 #map { height: 500px; width: 500px; align-items: center; }
@@ -35,3 +40,14 @@ $theme-colors: map-merge($theme-colors, (
 .bg-info_safeguards{
   background-color: $blue !important;
 }
+
+
+body, html {
+  height: 100%;
+  margin: 0;
+}
+.container-fluid {
+  padding: 0;
+}
+
+

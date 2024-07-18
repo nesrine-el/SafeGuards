@@ -20,7 +20,7 @@ class Earthquake
     #[ORM\Column(length: 255)]
     private ?string $latitude = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(name: 'idToken', length: 255)]
     private ?string $idToken = null;
 
     #[ORM\Column(length: 255)]
@@ -32,7 +32,7 @@ class Earthquake
     #[ORM\Column(length: 255)]
     private ?string $mag = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(name: 'magType', length: 255, nullable: true)]
     private ?string $magType = null;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -56,22 +56,22 @@ class Earthquake
     #[ORM\Column(length: 66)]
     private ?string $place = null;
 
-    #[ORM\Column(length: 19, nullable: true)]
+    #[ORM\Column(length: 19, name: 'horizontalError', nullable: true)]
     private ?string $horizontalError = null;
 
-    #[ORM\Column(length: 19, nullable: true)]
+    #[ORM\Column(length: 19, name: 'depthError', nullable: true)]
     private ?string $depthError = null;
 
-    #[ORM\Column(length: 21, nullable: true)]
+    #[ORM\Column(length: 21, name: 'magError', nullable: true)]
     private ?string $magError = null;
 
-    #[ORM\Column(length: 3, nullable: true)]
+    #[ORM\Column(length: 3, name: 'magNst', nullable: true)]
     private ?string $magNst = null;
 
-    #[ORM\Column(length: 2, nullable: true)]
+    #[ORM\Column(length: 2, name: 'locationSource', nullable: true)]
     private ?string $locationSource = null;
 
-    #[ORM\Column(length: 2, nullable: true)]
+    #[ORM\Column(length: 2, name: 'magSource', nullable: true)]
     private ?string $magSource = null;
 
     public function getId(): ?int

@@ -1,0 +1,99 @@
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #2a3b4c;
+    color: #f1f1f1;
+
+    .profile-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 20px;
+
+        img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            margin-bottom: 10px;
+            background-color: white;
+        }
+
+        h1 {
+            margin: 10px 0;
+        }
+
+        button {
+            margin: 5px;
+            padding: 10px 20px;
+            background-color: ligh;
+            border: none;
+            border-radius: 5px;
+            color: grey;
+            cursor: pointer;
+            font-size: 14px;
+
+            &:hover {
+                background-color: #1c7ed6;
+            }
+        }
+    }
+
+    .articles-section {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+
+        .popular-articles, .recent-articles {
+            width: 48%;
+
+            h2 {
+                margin-bottom: 10px;
+                color: #adb5bd;
+            }
+
+            .articles-list {
+                display: flex;
+                flex-direction: column;
+
+                .article-card {
+                    background-color: #fff;
+                    border: 1px solid #ccc;
+                    border-radius: 10px;
+                    margin-bottom: 20px;
+                    padding: 15px;
+                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                    display: flex;
+                    flex-direction: column;
+
+                    img {
+                        width: 100%;
+                        height: auto;
+                        border-radius: 10px;
+                        margin-bottom: 10px;
+                    }
+
+                    h3 {
+                        margin: 10px 0;
+                    }
+
+                    p {
+                        margin-bottom: 10px;
+                    }
+
+                    a {
+                        color: #1e90ff;
+                        text-decoration: none;
+                        align-self: flex-start;
+
+                        &:hover {
+                            text-decoration: underline;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+

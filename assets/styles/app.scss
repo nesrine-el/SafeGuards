@@ -12,6 +12,10 @@
 @import '../../vendor/twbs/bootstrap/scss/functions';
 @import '../../vendor/twbs/bootstrap/scss/variables';
 
+
+
+@import 'profile';
+
 @import './block/navbar.scss';
 @import './block/footer.scss';
 @import './article/article.scss';

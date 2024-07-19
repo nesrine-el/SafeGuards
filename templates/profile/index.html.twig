@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profil de {{ user.firstname }} {{ user.lastname }}{% endblock %}
+
+{% block body %}
+<div class="profile-container">
+    <div class="profile-header">
+        <img src="{{ asset('images/profile-placeholder.png') }}">
+        <h1>{{ user.firstname }} {{ user.lastname }}</h1>
+        <button>Suivre</button>
+        <button>Modifier la Bio</button>
+    </div>
+    <div class="articles-section">
+        <div class="popular-articles">
+            <h2>Les plus populaires</h2>
+            <div class="articles-list">
+                {% for article in articles[:5] %}
+                    <div class="article-card">
+                        <img src="{{ asset('uploads/' ~ article.image) }}" alt="{{ article.title }}">
+                        <h3>{{ article.title }}</h3>
+                        <p>{{ article.content|slice(0, 150) }}...</p>
+                        <a href="{{ path('article_show', {'id': article.id}) }}">voir plus</a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="recent-articles">
+            <h2>Les plus récents</h2>
+            <div class="articles-list">
+                {% for article in articles|slice(5, 5) %}
+                    <div class="article-card">
+                        <img src="{{ asset('uploads/' ~ article.image) }}" alt="{{ article.title }}">
+                        <h3>{{ article.title }}</h3>
+                        <p>{{ article.content|slice(0, 150) }}...</p>
+                        <a href="{{ path('article_show', {'id': article.id}) }}">voir plus</a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+

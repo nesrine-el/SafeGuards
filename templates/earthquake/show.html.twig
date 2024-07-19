@@ -1,0 +1,125 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+	<div class="titre text-center ">
+		<h1>Liste des Articles</h1>
+	</div>
+	<section>
+
+	{# jauge de l'intensité #}
+	<div class="jauge">
+		<div class="w-25 p-3 m-0 h-50 d-inline-block" style="background-color: #198754; width: 120px;">vert</div>
+		<div class="w-25 p-3 m-0 h-50 d-inline-block" style="background-color: #fd7e14; width: 120px;">orange</div>
+		<div class="w-25 p-3 m-0 h-50 d-inline-block" style="background-color: #dc3545; width: 120px;">rouge</div>
+	</div>
+	</section>
+
+	{# maps avec l'intensite de richter #}
+
+	<section>
+		<h2>map</h2>
+		<div id="map"></div>
+	</section>
+
+	{# bloc des 3 articles #}
+    	<section class="mx-3">
+
+	<div class="image ">
+		<img src="{{ asset('images/carre-gris-Copie-2.jpg')}}" alt="image_one" width="100" height="150">
+
+
+		<img src="{{ asset('images/carre-gris-Copie-2.jpg')}}" alt="image_two" width="100" height="150">
+
+
+		<img src="{{ asset('images/carre-gris-Copie-2.jpg')}}" alt="image_three" width="100" height="150">
+	</div>
+    	</section>
+
+	{# articles #}
+    	<section>
+
+	<div class="article_one  mx-5 mt-5">
+
+
+		<p style="display: flex;justify-content: flex-start; margin-left=30px;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur repellendus natus ipsum sequi perferendis quam asperiores assumenda eaque, nam optio, et excepturi atque eius. Sunt repellat iusto consequatur ad eaque atque! Fugiat animi blanditiis recusandae tempore est voluptate atque officiis voluptatibus, quos nam soluta sit, officia earum et in minus iure laborum nesciunt, ratione consectetur eveniet aut. Consectetur deleniti quod ipsa impedit commodi accusamus. Laudantium quas molestiae inventore quia delectus rem! In quibusdam optio natus deserunt repellat eos ea aperiam, dolorum voluptatibus reprehenderit ipsa animi ullam inventore neque. Doloremque, est asperiores. Dolorem ea exercitationem laboriosam dicta magnam similique soluta. Adipisci quidem minus animi, dolores nesciunt eveniet optio consectetur explicabo rem accusamus consequatur aliquid ipsam, porro error velit voluptatum est. Quasi, impedit iste repudiandae magni tempore velit illo. Quidem, alias officia, suscipit, labore ut facilis libero sit at vel fugit a adipisci necessitatibus facere. Adipisci, eum. Maxime accusamus repellat culpa soluta amet harum ducimus maiores. Provident amet sed sequi, magnam dolores labore consequatur repellendus suscipit? Exercitationem illum quasi sint aliquam praesentium possimus veniam magni asperiores, accusamus eius earum ab maiores 
+									rerum laboriosam voluptatem aperiam commodi officiis provident eos perferendis aut harum! Et est ratione minima ut corporis accusantium autem ipsum architecto fuga sunt? 
+									Tempore optio nam fugit molestias veritatis perspiciatis possimus quae neque error, sequi quasi aliquam sapiente sint unde id atque dolorem reprehenderit nemo rerum, 
+									*vitae maiores, amet expedita suscipit. Ea, dolorum! Asperiores, obcaecati. Nihil esse accusantium officia eum. Quia qui molestias neque itaque. Dignissimos magni 
+									corporis dolore? At quisquam laudantium hic, modi numquam tenetur obcaecati ducimus error asperiores distinctio? A, dignissimos possimus quia laudantium animi voluptate 
+									minus dolor provident. Voluptatibus reprehenderit qui harum vero neque est id odit nemo mollitia quidem autem cum esse voluptates placeat, aliquid voluptatem possimus nesciunt a, 
+									similique quis tenetur perferendis. Recusandae excepturi mollitia, ex architecto molestias quisquam aliquid id facilis alias nulla, dolor eius laudantium laborum sed saepe explicabo. 
+									Numquam blanditiis voluptatibus quod quae aspernatur repellat, suscipit in earum! Vitae error, at soluta consectetur harum blanditiis repellendus impedit porro voluptas non beatae placeat
+									atque quos suscipit? Atque officia eum deleniti unde, accusamus, nostrum et nulla sunt doloribus fugit est omnis ex natus autem error fugiat ratione dolores? Nesciunt provident quo 
+									voluptas quisquam animi laborum tempore perspiciatis suscipit ipsam possimus accusamus temporibus aspernatur fuga, culpa harum! Ea nesciunt adipisci dicta nisi odit velit, explicabo
+									eos? Nesciunt placeat nisi, temporibus accusantium, voluptate, culpa ex vitae architecto esse corporis molestias quidem cupiditate accusamus eos quia explicabo velit error earum! 
+									Consequatur, dolore nisi incidunt aut consectetur commodi culpa ratione vel molestias laborum repellat, blanditiis maxime. Facilis magnam possimus officiis qui, necessitatibus excepturi.
+									Sit quis nisi fuga veritatis veniam, explicabo debitis aspernatur reiciendis rem, delectus vero voluptas. Sed illum, nulla libero possimus minus voluptatibus eaque aspernatur unde. 
+									Consectetur veniam voluptate provident deserunt reprehenderit rem ullam officiis quae aliquid aliquam debitis fugiat ex quas dolore, perferendis earum esse unde neque minus dolorum a!
+								    Inventore quisquam tenetur quasi, natus at porro, mollitia animi laboriosam itaque iste est! Totam quam architecto amet suscipit minima sequi? Adipisci temporibus assumenda debitis  
+									aperiam, animi exercitationem iure placeat deserunt alias id ullam dicta minima laborum veniam dolores nulla.<img src="{{ asset('images/carre-gris-Copie-2.jpg')}}" alt="image_one" width="650" height="600"></p>
+	</div>
+
+	<div class="article_two  mx-5 mt-5">
+		<p style="display: flex;justify-content: flex-end;"><img src="{{ asset('images/carre-gris-Copie-2.jpg')}}" alt="image_one"  ;
+        width="650" height="600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur repellendus natus ipsum sequi perferendis quam asperiores assumenda eaque, nam optio, et excepturi atque eius. Sunt repellat iusto consequatur ad eaque atque! Fugiat animi blanditiis recusandae tempore est voluptate atque officiis voluptatibus, quos nam soluta sit, officia earum et in minus iure laborum nesciunt, ratione consectetur eveniet aut. Consectetur deleniti quod ipsa impedit commodi accusamus. Laudantium quas molestiae inventore quia delectus rem! In quibusdam optio natus deserunt repellat eos ea aperiam, dolorum voluptatibus reprehenderit ipsa animi ullam inventore neque. Doloremque, est asperiores. Dolorem ea exercitationem laboriosam dicta magnam similique soluta. Adipisci quidem minus animi, dolores nesciunt eveniet optio consectetur explicabo rem accusamus consequatur aliquid ipsam, porro error velit voluptatum est. Quasi, impedit iste repudiandae magni tempore velit illo. Quidem, alias officia, suscipit, labore ut facilis libero sit at vel fugit a adipisci necessitatibus facere. Adipisci, eum. Maxime accusamus repellat culpa soluta amet harum ducimus maiores. Provident amet sed sequi, magnam dolores labore consequatur repellendus suscipit? Exercitationem illum quasi sint aliquam praesentium possimus veniam magni asperiores, accusamus eius earum ab maiores 
+									rerum laboriosam voluptatem aperiam commodi officiis provident eos perferendis aut harum! Et est ratione minima ut corporis accusantium autem ipsum architecto fuga sunt? 
+									Tempore optio nam fugit molestias veritatis perspiciatis possimus quae neque error, sequi quasi aliquam sapiente sint unde id atque dolorem reprehenderit nemo rerum, 
+									*vitae maiores, amet expedita suscipit. Ea, dolorum! Asperiores, obcaecati. Nihil esse accusantium officia eum. Quia qui molestias neque itaque. Dignissimos magni 
+									corporis dolore? At quisquam laudantium hic, modi numquam tenetur obcaecati ducimus error asperiores distinctio? A, dignissimos possimus quia laudantium animi voluptate 
+									minus dolor provident. Voluptatibus reprehenderit qui harum vero neque est id odit nemo mollitia quidem autem cum esse voluptates placeat, aliquid voluptatem possimus nesciunt a, 
+									similique quis tenetur perferendis. Recusandae excepturi mollitia, ex architecto molestias quisquam aliquid id facilis alias nulla, dolor eius laudantium laborum sed saepe explicabo. 
+									Numquam blanditiis voluptatibus quod quae aspernatur repellat, suscipit in earum! Vitae error, at soluta consectetur harum blanditiis repellendus impedit porro voluptas non beatae placeat
+									atque quos suscipit? Atque officia eum deleniti unde, accusamus, nostrum et nulla sunt doloribus fugit est omnis ex natus autem error fugiat ratione dolores? Nesciunt provident quo 
+									voluptas quisquam animi laborum tempore perspiciatis suscipit ipsam possimus accusamus temporibus aspernatur fuga, culpa harum! Ea nesciunt adipisci dicta nisi odit velit, explicabo
+									eos? Nesciunt placeat nisi, temporibus accusantium, voluptate, culpa ex vitae architecto esse corporis molestias quidem cupiditate accusamus eos quia explicabo velit error earum! 
+									Consequatur, dolore nisi incidunt aut consectetur commodi culpa ratione vel molestias laborum repellat, blanditiis maxime. Facilis magnam possimus officiis qui, necessitatibus excepturi.
+									Sit quis nisi fuga veritatis veniam, explicabo debitis aspernatur reiciendis rem, delectus vero voluptas. Sed illum, nulla libero possimus minus voluptatibus eaque aspernatur unde. 
+									Consectetur veniam voluptate provident deserunt reprehenderit rem ullam officiis quae aliquid aliquam debitis fugiat ex quas dolore, perferendis earum esse unde neque minus dolorum a!
+								    Inventore quisquam tenetur quasi, natus at porro, mollitia animi laboriosam itaque iste est! Totam quam architecto amet suscipit minima sequi? Adipisci temporibus assumenda debitis  
+									aperiam, animi exercitationem iure placeat deserunt alias id ullam dicta minima laborum veniam dolores nulla.</p>
+	</div>
+
+	</section>
+	<section>
+
+	{# source a gauche #}
+	<div style="display: flex;justify-content: flex-start;">
+		<h4>Sources</h4>
+		<div>
+			<p>
+				<a class="link-opacity-50-hover" href="#">Link A</a>
+			</p>
+			<p>
+				<a class="link-opacity-50-hover" href="#">Link B</a>
+			</p>
+			<p>
+				<a class="link-opacity-50-hover" href="#">Link C</a>
+			</p>
+		</div>
+	</div>
+    	</section>
+
+	{# liste des articles a droite #}
+	{# <div class="container style="display: flex;justify-content: flex-end;>
+			    <h1>Lire aussi</h1>
+			    <div class="articles p-2 bg-info border">
+			        {% for article in articles %}
+			            <div class="article">
+			                <div class="image">
+			                    <img src="{{ asset('images/' ~ article.image) }}" alt="{{ article.title }}">
+			                </div>
+			                <div class="content">
+			                    <h2>{{ article.title }}</h2>
+			                    <p class="article-p">{{ article.content|slice(0, 150) }}...</p>
+			                    <p class="date">Publié le {{ article.createdAt|date('d/m/Y') }} à {{ article.location }}</p>
+			                </div>
+			                <div class="details">
+			                    <a href="{{ path('article_show', {id: article.id}) }}" class="btn">Voir détails</a>
+			                </div>
+			            </div>
+			        {% endfor %}
+			    </div>
+			</div> #}
+{% endblock %}

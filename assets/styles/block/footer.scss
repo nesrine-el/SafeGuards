@@ -1,0 +1,33 @@
+@import '../color/variables.scss';
+@import '../color/background.scss';
+@import '../fonts.scss';
+
+footer {
+    background-color: $blue;
+    height: 76px;
+    margin-top: 87px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 100px;
+}
+
+.link_footer {
+    display: flex;
+    margin-left: 20px;
+    gap: 20px;
+}
+
+.link_footer a {
+    text-decoration: none;
+    color: white;
+}
+
+.link_footer a:hover {
+    color: $dark-blue;
+}
+
+.copyright_footer p {
+    margin: 0px 20px 0px 0px;
+    color: white;
+}

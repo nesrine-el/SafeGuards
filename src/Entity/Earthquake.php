@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\EarthquakeRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: EarthquakeRepository::class)]
 class Earthquake
@@ -12,18 +13,21 @@ class Earthquake
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['earthquakes.index'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
     private ?string $time = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['earthquakes.index'])]
     private ?string $latitude = null;
 
     #[ORM\Column(name: 'idToken', length: 255)]
     private ?string $idToken = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['earthquakes.index'])]
     private ?string $longitude = null;
 
     #[ORM\Column(length: 255)]
@@ -69,6 +73,7 @@ class Earthquake
     private ?string $magNst = null;
 
     #[ORM\Column(length: 2, name: 'locationSource', nullable: true)]
+    #[Groups(['earthquakes.index'])]
     private ?string $locationSource = null;
 
     #[ORM\Column(length: 2, name: 'magSource', nullable: true)]

@@ -34,4 +34,13 @@ class EarthquakeController extends AbstractController
             'articles' => $articles,
         ]);
     }
+    #[Route('/earthquake/prevention', name: 'earthquake_prevention')]
+    public function prevention(): Response
+    {
+        
+        return $this->render('earthquake/prevention.html.twig', [
+            'controller_name' => 'EarthquakeController',
+        ]);
+    }
+   
 }

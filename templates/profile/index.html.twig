@@ -3,36 +3,42 @@
 {% block title %}Profil de {{ user.firstname }} {{ user.lastname }}{% endblock %}
 
 {% block body %}
-<div class="profile-container">
-    <div class="profile-header">
+<div class="container">
+    <div class="header">
         <img src="{{ asset('images/profile-placeholder.png') }}">
-        <h1>{{ user.firstname }} {{ user.lastname }}</h1>
-        <button>Suivre</button>
-        <button>Modifier la Bio</button>
+        <div>
+            <h1>{{ user.firstname }} {{ user.lastname }}</h1>
+            <button class="follow-btn">Suivre</button>
+            <button class="edit-bio-btn">Modifier la Bio</button>
+        </div>
     </div>
-    <div class="articles-section">
-        <div class="popular-articles">
+    <div class="content">
+        <div class="popular">
             <h2>Les plus populaires</h2>
-            <div class="articles-list">
+            <div class="cards">
                 {% for article in articles[:5] %}
-                    <div class="article-card">
+                    <div class="card">
                         <img src="{{ asset('uploads/' ~ article.image) }}" alt="{{ article.title }}">
+                        <div>
                         <h3>{{ article.title }}</h3>
                         <p>{{ article.content|slice(0, 150) }}...</p>
                         <a href="{{ path('article_show', {'id': article.id}) }}">voir plus</a>
+                       </div>
                     </div>
                 {% endfor %}
             </div>
         </div>
-        <div class="recent-articles">
+        <div class="recent">
             <h2>Les plus récents</h2>
-            <div class="articles-list">
+            <div class="cards">
                 {% for article in articles|slice(5, 5) %}
-                    <div class="article-card">
+                    <div class="card">
                         <img src="{{ asset('uploads/' ~ article.image) }}" alt="{{ article.title }}">
+                        <div>
                         <h3>{{ article.title }}</h3>
                         <p>{{ article.content|slice(0, 150) }}...</p>
                         <a href="{{ path('article_show', {'id': article.id}) }}">voir plus</a>
+                      </div>
                     </div>
                 {% endfor %}
             </div>

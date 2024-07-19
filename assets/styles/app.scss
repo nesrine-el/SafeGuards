@@ -12,10 +12,16 @@
 @import '../../vendor/twbs/bootstrap/scss/functions';
 @import '../../vendor/twbs/bootstrap/scss/variables';
 
-@import './article/article.scss';
+
+
+@import 'profile';
+
 @import './block/navbar.scss';
 @import './block/footer.scss';
+
 @import './earthquake/show.scss';
+
+@import './article/article.scss';
 
 body {
   background-color: $dark-blue !important; margin: 0; padding: 0;

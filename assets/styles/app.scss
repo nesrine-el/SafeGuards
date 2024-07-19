@@ -22,6 +22,8 @@
 @import './earthquake/show.scss';
 
 @import './article/article.scss';
+@import '../styles/color/dashboard.scss';
+
 
 body {
   background-color: $dark-blue !important; margin: 0; padding: 0;

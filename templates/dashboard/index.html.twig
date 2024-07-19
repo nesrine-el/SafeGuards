@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block body %}
+<div class="container">
+    <button class="create-article-btn">Créer un article</button>
+    <div class="my-articles">
+        <h2>Mes articles</h2>
+        {% for article in articles %}
+        <div class="article-card">
+            <div class="article-info">
+                <h3>{{ article.title }}</h3>
+                <p>{{ article.date }}</p>
+            </div>
+            <div class="article-stats">
+                <p>nombre de like : {{ article.likes }}</p>
+                <p>nombre de commentaire : {{ article.comments }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="favorites">
+        <div class="favorite-articles">
+            <h2>Mes articles favoris</h2>
+            {% for article in favoriteArticles %}
+            <div class="favorite-item">{{ article }}</div>
+            {% endfor %}
+        </div>
+        <div class="favorite-authors">
+            <h2>Mes auteurs favoris</h2>
+            {% for author in favoriteAuthors %}
+            <div class="favorite-item">{{ author }}</div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -30,11 +30,20 @@ if (document.location.href == "http://127.0.0.1:8000/" || document.location.href
         const reponse = await fetch("http://127.0.0.1:8000/api/earthquakes");
         const earthquakes = await reponse.json();
         earthquakes.forEach(earthquake => {
+            console.log(parseFloat(earthquake["mag"]));
+            let color = 'yellow';
+            if (parseFloat(earthquake["mag"]) > 2 ) {
+                color = 'orange';
+            }
+            if (parseFloat(earthquake["mag"])  > 6) {
+                color = 'red';
+            }
+            console.log()
             var circle = L.circle([earthquake["latitude"], earthquake["longitude"]], {
-                color: 'red',
-                fillColor: '#f03',
-                fillOpacity: 0.5,
-                radius: 10000
+                color: color,
+                fillColor: color,
+                fillOpacity: 0.4,
+                radius: earthquake["mag"] * 50000
             }).addTo(map);
         });
       }

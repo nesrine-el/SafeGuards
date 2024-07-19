@@ -15,7 +15,7 @@ class EarthquakeController extends AbstractController
     public function index(EarthquakeRepository $earthquakeRepository, Request $request)
     {
         //$earthquakes = $earthquakeRepository->findAll();
-        $earthquakes = $earthquakeRepository->paginationEarthquakes($request->query->getInt(key: 'page', default:0), 1000);
+        $earthquakes = $earthquakeRepository->paginationEarthquakes($request->query->getInt(key: 'page', default:0), 10000);
         return $this->json($earthquakes, 200, [], [
             'groups' => ['earthquakes.index']
         ]);

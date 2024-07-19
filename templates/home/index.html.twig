@@ -6,12 +6,9 @@
 {% block body %}
 
 	<header>
-	{% if user != 'no_user' %}
-		{{ user.firstName }}
-	{% else %}
-		coucou
-	{% endif %}
-	
+
+
+		
 	
 		<h1>
 			header
@@ -22,8 +19,31 @@
 		<div id="map"></div>
 	</section>
 	<section>
+{# total items count #}
+<div class="count">
+    {{ pagination.getTotalItemCount }}
+</div>
+<table>
+    <tr>
+        {# sorting of properties based on query components #}
+        <th>{{ knp_pagination_sortable(pagination, 'Id', 'a.id') }}</th>
+    </tr>
+
+    {# table body #}
+    {% for earthquake in pagination.items %}
+        <tr {% if loop.index is odd %}class="color"{% endif %}>
+            <td>{{ earthquake.id }}</td>
+        </tr>
+    {% endfor %}
+</table>
+{# display navigation #}
+<div class="navigation">
+    {{ knp_pagination_render(pagination) }}
+</div>
 		<h2>liste articles les plus lus</h2>
 		<h2>liste articles les plus récent</h2>
 	</section>
-
+	<script>
+	
+	</script>
 {% endblock %}

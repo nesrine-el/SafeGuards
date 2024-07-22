@@ -19,5 +19,6 @@ import { Dropdown } from 'bootstrap';
 
 // leaflet map
 import './js/map.js';
+import './js/apexcharts.js';
 
 console.log('Fin du js');

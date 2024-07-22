@@ -3,35 +3,13 @@
 {% block title %}{% endblock %}
 
 {% block body %}
+	<input id='idEarthquake' hidden value= {{ earthquake.id }}></input>
 	<div class="titre text-center  text-light">
 		<h1>Liste des Articles</h1>
 	</div>
 	<section>
 		<!-- Jauge de l'intensité -->
 		<div>
-			<style>
-				.jauge div {
-
-
-					color: white;
-					font-weight: bold;
-					flex: 1;
-					
-				}
-				.jauge {
-					display: flex;
-					flex-direction: column;
-					height: 150px;
-				}
-				.jauge__part-1 {
-					display: flex;
-					justify-content: space-between;
-				}
-				.jauge__part-2 {
-					display: flex;
-					height: 80px;
-				}
-			</style>
 
 			<div class="jauge container ">
 				<div class="jauge__part-1">
@@ -71,26 +49,6 @@
 		</div>
 	</section>
 
-
-	<style>
-		.articles {
-			display: flex;
-			flex-direction: column;
-		}
-
-		.article {
-			display: flex;
-			flex-direction: row;
-
-			&:nth-child(2n) {
-				flex-direction: row-reverse;
-			}
-		}
-
-		.article__img-container {}
-
-		.article__content {}
-	</style>
 	<section>
 		<div class="articles mx-5 mt-5 text-light">
 			{% for i in 0..1 %}
@@ -107,6 +65,19 @@
 			{% endfor %}
 		</div>
 	</section>
+
+	<style>
+        /* Style pour le conteneur du graphique */
+        #chart {
+            width: 1000px; /* ou spécifie une largeur fixe comme '600px' */
+            height: 200px; /* ou spécifie une hauteur fixe comme '400px' */
+        }
+    </style>
+
+	<section data-entry="{{earthquake.id}}" >
+		<div id="chart"></div>
+	</section>
+	
 	<section>
 		<div
 			class=" mt-5">

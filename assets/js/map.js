@@ -2,11 +2,32 @@
 
 if (document.location.href == "http://127.0.0.1:8000/" || document.location.href.includes("http://127.0.0.1:8000/?")  ) {
     
-    var map = L.map('map').setView([51.505, -0.09], 13);
+    var map = L.map('map').setView([0, 0],200);
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 10,
+    maxZoom: 5,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map); 
+
+    var legend = L.control({position: 'topright'});
+    legend.onAdd = function (map) {
+
+    var div = L.DomUtil.create('div', 'map-legend');
+    var labels = ['<strong>Magnétude</strong>'];
+    var titleMagnetude = ['< 2','> 2','> 4','> 6'];
+    var titleColor = ['yellow','orange','red','purple'];
+
+    for (var i = 0; i < titleMagnetude.length; i++) {
+
+            div.innerHTML += 
+            labels.push(
+                `<i style="color: ${titleColor[i]} "> ${titleMagnetude[i]} </i>` 
+            );
+
+        }
+        div.innerHTML = labels.join('<br>');
+    return div;
+    };
+    legend.addTo(map);
 
     // recuperer donnees de la page api/earthquakes
     async function fetchAndDisplayEarthquakes() {

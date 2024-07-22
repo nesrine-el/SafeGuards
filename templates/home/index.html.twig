@@ -1,49 +1,44 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!
+{% block title %}Home
 {% endblock %}
 
 {% block body %}
 
 	<header>
-
-
-		
-	
 		<h1>
 			header
 		</h1>
 	</header>
-	<section>
-		<h2>map</h2>
+	<input type="hidden" id="img_path" value="{{ asset('images/tremblementDeTerre.jpeg') }}">
+	<h2>map</h2>
+	<section  class='container d-flex justify-content-center '>
 		<div id="map"></div>
 	</section>
-	<section>
-{# total items count #}
-<div class="count">
-    {{ pagination.getTotalItemCount }}
-</div>
-<table>
-    <tr>
-        {# sorting of properties based on query components #}
-        <th>{{ knp_pagination_sortable(pagination, 'Id', 'a.id') }}</th>
-    </tr>
 
-    {# table body #}
-    {% for earthquake in pagination.items %}
-        <tr {% if loop.index is odd %}class="color"{% endif %}>
-            <td>{{ earthquake.id }}</td>
-        </tr>
-    {% endfor %}
-</table>
-{# display navigation #}
-<div class="navigation">
-    {{ knp_pagination_render(pagination) }}
-</div>
+	<section>
+		{# total items count #}
+		<div class="count">
+			{{ pagination.getTotalItemCount }}
+		</div>
+		<table>
+			<tr>
+				{# sorting of properties based on query components #}
+				<th>{{ knp_pagination_sortable(pagination, 'Id', 'a.id') }}</th>
+			</tr>
+
+			{# table body #}
+			{% for earthquake in pagination.items %}
+				<tr {% if loop.index is odd %}class="color"{% endif %}>
+					<td>{{ earthquake.id }}</td>
+				</tr>
+			{% endfor %}
+		</table>
+		{# display navigation #}
+		<div class="navigation">
+			{{ knp_pagination_render(pagination) }}
+		</div>
 		<h2>liste articles les plus lus</h2>
 		<h2>liste articles les plus récent</h2>
 	</section>
-	<script>
-	
-	</script>
 {% endblock %}

@@ -27,7 +27,7 @@ class ModelEarthquakes {
     // TABLE SQL DANS LAQUELLE ALLER CHERCHER LES DATAS
     const SQL_TABLENAME         = 'earthquake';
     // DOSSIER DE DESTINATION DES MODÈLES SAUVEGARDÉS
-    const DIR_MODELS            = 'saved_models';
+    const DIR_MODELS            = __DIR__ . '/saved_models';
     // PRÉFIX À AJOUTER AUX NOMS DES MODÈLES LORS D'UN RENNOMAGE
     const MODEL_NAME_PREFIX     = 'earthquakes';
 
@@ -55,7 +55,7 @@ class ModelEarthquakes {
 
         // CRÉATION DU LOGGER POUR AFFICHER DES MESSAGES DANS LE TERMINAL
         $this->logger = new Screen();
-        $this->logger->info('Initialisation du modèle');
+        // $this->logger->info('Initialisation du modèle');
 
         // PRÉCUATION POUR NE PAS ÊTRE LIMITÉ EN MÉMOIRE
         ini_set('memory_limit', '-1');
@@ -169,7 +169,7 @@ class ModelEarthquakes {
             $estimator = PersistentModel::load(new Filesystem(self::DIR_MODELS . '/' . $savedModelFilename));
 
             // PRÉDICTIONS
-            $this->logger->info('Prédictions en cours');
+            // $this->logger->info('Prédictions en cours');
             $predictions = $estimator->predict($dataset);
 
             // RÉCUPÉRATION DES VALEURS ATTENDUES
@@ -236,8 +236,10 @@ class ModelEarthquakes {
      * @return void
      */
     function loadSavedModel(string $filename){
+
+
         $this->estimator = PersistentModel::load(new Filesystem(self::DIR_MODELS . '/' . $filename));
-        $this->logger->info("Modèle $filename chargé");
+        //$this->logger->info("Modèle $filename chargé");
     }
 
     /**
@@ -253,7 +255,7 @@ class ModelEarthquakes {
         $dataset = new Unlabeled([[round($latitude*self::COORD_MUL_COEFF), round($longitude*self::COORD_MUL_COEFF)]]);
 
         // lance la prédiction
-        $this->logger->info('Prédictions en cours');
+        // $this->logger->info('Prédictions en cours');
         $predictions = $this->estimator->predict($dataset);
 
         return round($predictions[0]/1000 , 1);

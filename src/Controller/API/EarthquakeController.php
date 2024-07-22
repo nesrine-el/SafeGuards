@@ -3,7 +3,9 @@
 namespace App\Controller\API;
 
 use App\Entity\Earthquake;
+use App\ModelEarthquakes;
 use App\Repository\EarthquakeRepository;
+use PDO;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Attribute\Route;
@@ -15,7 +17,7 @@ class EarthquakeController extends AbstractController
     public function index(EarthquakeRepository $earthquakeRepository, Request $request)
     {
         //$earthquakes = $earthquakeRepository->findAll();
-        $earthquakes = $earthquakeRepository->paginationEarthquakes($request->query->getInt(key: 'page', default:0), 10000);
+        $earthquakes = $earthquakeRepository->paginationEarthquakes($request->query->getInt(key: 'page', default:0), 1000);
         return $this->json($earthquakes, 200, [], [
             'groups' => ['earthquakes.index']
         ]);
@@ -26,5 +28,18 @@ class EarthquakeController extends AbstractController
         return $this->json($e,200,[],[
             'groups' => ['earthquakes.index', 'earthquakes.show'],
         ]);
+    }
+
+
+    #[Route('/api/earthquakes/prediction/lat/{lat}/long/{long}', name: 'app_api_earthquakes_predict')]
+    public function predict($lat, $long) {
+
+        $model = new ModelEarthquakes(new PDO('mysql:host=127.0.0.1; dbname=SafeGuards', 'root', 'root'));
+
+
+        $model->loadSavedModel('earthquakes_model_66.rbx');
+        $value = $model->predict($lat, $long);
+        return $this->json($value);
+        
     }
 }

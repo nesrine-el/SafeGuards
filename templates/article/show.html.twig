@@ -13,42 +13,54 @@
 			</div>
 		{% endfor %}
 		{# message d'erreur
-						        {% for message in app.flashes('error') %}
-									<div class="alert alert-error">
-										{{ message }}
-									</div>
-								{% endfor %} #}
+																		        {% for message in app.flashes('error') %}
+																					<div class="alert alert-error">
+																						{{ message }}
+																					</div>
+																				{% endfor %} #}
 		<div class="article-detail">
 			<div class="image">
 				<img src="{{ asset('images/' ~ article.image) }}" alt="{{ article.title }}">
 			</div>
 			<div class="content">
-				<h2>{{ article.title }}</h2>
-				<p>{{ article.content }}</p>
+				<h2>
+					{{ article.title }}
+				</h2>
+				<p>
+					{{ article.content }}
+				</p>
 				<div class="actions">
 					<a href="#" class="icon-star"></a>
 					<a href="#" class="icon-heart"></a>
 				</div>
-
-
+			</div>
+		</div>
+		<div class="container">
+		
 				{{ form_start(form) }}
 				{{ form_widget(form) }}
 				<button type="submit" class="btn btn-primary">Soumettre</button>
 				{{ form_end(form) }}
-				<div class="buttons">
-					<button class="btn">Contacter</button>
-				</div>
-
-
+	
+		</div>
+		<div class="container">
+			<div class='row flex-column-reverse pt-2  '>
 				{% for comment in comments %}
-					<div>{{comment.content|raw}}</div>
-					<p>Publié par
-						{{comment.user.firstName}}
-						{{comment.user.lastName}}</p>
-					<p>Le
-						{{comment.createdAt|date("d/m/y H:i")}}</p>
-
+					<div class=' rounded px-4 pt-4 h-100 my-2 bg-blue d-flex flex-column  justify-content-between pb-2'>
+						<div class="h-80">
+							{{comment.content|raw}}
+						</div>
+						<div class='mt-4'>
+							<p class='mb-0' >
+								Publié par {{comment.user.firstName}} {{comment.user.lastName}}
+							</p>
+							<p class='mb-0' >
+								Le {{comment.createdAt|date("d/m/y H:i")}}
+							</p>
+						</div>
+					</div>
 				{% endfor %}
+
 			</div>
 		</div>
 	</div>

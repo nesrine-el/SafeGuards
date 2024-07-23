@@ -5,7 +5,7 @@
 
 {% block body %}
 
-	<header class= 'mt-4 container text-center'>
+	<header class= 'my-4 container text-center'>
 		<h1 class= 'mb-4 text-center'>
 			SAFE GUARDS
 		</h1>
@@ -20,42 +20,84 @@
 	</section>
 
 	<section>
-		<div class="d-flex justify-content-around">
+		<h2 class="text-center my-4"><a class='link-hover' href="{{ path('article_index')}}">Voir tout les articles</a> </h2>
+		<div class="d-flex justify-content-around mt-4">
 			<div>
-				<h3>Les articlese les plus populaires</h3>
+				<h3>Les articles les plus populaires</h3>
 				{% for article in readarticles %}
-					{{ article.id}}
+					<a href="{{ path('article_show', {id : article.id}) }}">
+						<div class='card-home d-flex pe-4  my-4'>
+							<div>
+								{%  set num = random([1,2,3,4]) %}
+								{% if num == 1 %}
+									{% set url = 'images/c1.jpeg' %}
+								{% elseif num == 2 %}
+									{% set  url = 'images/c2.jpeg' %}
+								{% elseif num == 3 %}
+									{% set url = 'images/c3.jpeg' %}
+								{% elseif num == 4 %}
+									{% set url = 'images/c4.jpeg' %}
+									
+								{% endif %}
+								<img src=" {{ asset(url) }} "  class='card-img-home' alt="">
+
+							</div>
+							<div class='ms-4 pt-4'>
+								<h4 class='mb-4'>{{ article.title}}</h4>
+								<p>{{ article.readCount}} ont lu cet article, dépêche-toi de le lire</p>
+							</div>
+						</div>
+					</a>
 				{% endfor %}
 			</div>
 			<div>
 				<h3>Les articles les plus lus</h3>
+					{% for article in likedarticles %}
+						<a href="{{ path('article_show', {id : article['id']}) }}">
+							<div class='card-home d-flex pe-4  my-4'>
+								<div>
+									{%  set num = random([1,2,3,4]) %}
+									{% if num == 1 %}
+										{% set url = 'images/c1.jpeg' %}
+									{% elseif num == 2 %}
+										{% set  url = 'images/c2.jpeg' %}
+									{% elseif num == 3 %}
+										{% set url = 'images/c3.jpeg' %}
+									{% elseif num == 4 %}
+										{% set url = 'images/c4.jpeg' %}
+										
+									{% endif %}
+									<img src=" {{ asset(url) }} "  class='card-img-home' alt="">
+
+								</div>
+								<div class='ms-4 pt-4'>
+									<h4 class='mb-4'>{{ article['title']}}</h4>
+									<p>{{ article['count']}} personnes ont aimé cet article, viens le lire , click</p>
+								</div>
+							</div>
+						</a>
+					{% endfor %}
 			</div>
 		</div>
+		
 	</section>
 
-	<section>
+	<section class='container mt-4'>
 		{# total items count #}
-		<div class="count">
-			{{ pagination.getTotalItemCount }}
-		</div>
-		<table>
-			<tr>
-				{# sorting of properties based on query components #}
-				<th>{{ knp_pagination_sortable(pagination, 'Id', 'a.id') }}</th>
-			</tr>
+		<h2 class="text-center">Les derniers séismes</h2>
 
-			{# table body #}
-			{% for earthquake in pagination.items %}
-				<tr {% if loop.index is odd %}class="color"{% endif %}>
-					<td>{{ earthquake.id }}</td>
-				</tr>
-			{% endfor %}
-		</table>
+	
+		{% for earthquake in pagination.items %}
+			<div>
+
+				{{ earthquake.id }}
+			
+			</div>
+		{% endfor %}
+
 		{# display navigation #}
-		<div class="navigation">
+		<div class="navigation d-flex justify-content-center">
 			{{ knp_pagination_render(pagination) }}
 		</div>
-		<h2>liste articles les plus lus</h2>
-		<h2>liste articles les plus récent</h2>
 	</section>
 {% endblock %}

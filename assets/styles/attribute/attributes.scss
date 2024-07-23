@@ -16,10 +16,18 @@ h1 {
     margin-bottom: 20px;
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    color: #FFFFFF;
+a {
+    text-decoration: none !important;
+   
 }
+
+.link-hover {
+color: white !important;
+}
+
+.link-hover:hover {
+    color: $card-blue !important;
+}
+
+
 

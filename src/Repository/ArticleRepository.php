@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Article;
+use App\Entity\LikeArticle;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -41,29 +42,36 @@ class ArticleRepository extends ServiceEntityRepository
     //        ;
     //    }
 
-     public function sortByReadCount(): array
+    public function sortByReadCount(): array
         {
             $qb = $this->createQueryBuilder('a')
-            ->orderBy('a.readCount', 'ASC');
-            ;
+            ->orderBy('a.readCount', 'DESC')
+            ->setMaxResults(5);
 
             $query = $qb->getQuery();
             return $query->execute();
         } 
 
-     public function sortByLikes(): array
-        {
-            $qb = $this->createQueryBuilder('a')
-            ->orderBy('a.readCount', 'ASC');
-            ;
-/*             SELECT article.title, article.content, COUNT(like_article.article_id) as count
-FROM article
-JOIN like_article ON like_article.article_id = article.id 
-GROUP BY article.title, article.id
-ORDER BY count; */
 
-            $query = $qb->getQuery();
-            return $query->execute();
-        } 
+    
+    public function sortByLikes(): array
+        {
+            $query = $this->createQueryBuilder('a')
+            ->select(' a.title , a.content , a.id , COUNT(likeArticle.article) AS count')
+            ->join('a.likeArticles', 'likeArticle')
+            ->groupBy('a')
+            ->orderBy('count', 'DESC')
+            ->setMaxResults(5)
+            ->getQuery();
+
+            return $query->execute(); 
+
+            /*  SELECT article.title, article.content, COUNT(like_article.article_id) as count
+                FROM article
+                JOIN like_article ON like_article.article_id = article.id 
+                GROUP BY article.title, article.id
+                ORDER BY count;
+            */
+        }
 
 }

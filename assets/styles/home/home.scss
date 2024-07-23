@@ -1,0 +1,18 @@
+
+.card-img-home {
+    height: 150px;
+    width: 150px;
+}
+
+.card-home {
+    background: $blue;
+    color: white !important;
+}
+
+.card-home:hover {
+    background: $card-blue; 
+}
+
+.link-card {
+    color: white !important;
+}

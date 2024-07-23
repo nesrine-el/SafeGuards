@@ -1,15 +1,22 @@
 <div class="navbar">
     <div class="link_navbar">
-        <img src="{{asset('images/Logo_SafeGuards.png')}}" alt="">
-        <a href="">Articles</a>
-        <a href="">Catastrophes</a>
-        <a href="">Prévention</a>
-        <a href="">Map</a>
+        <a href="{{ path('home') }}">
+            <img src="{{asset('images/Logo_SafeGuards.png')}}" alt="">
+        </a>
+        <a href="{{ path('article_index') }}">Articles</a>
+        <a href="{{ path('app_earthquake') }}">Catastrophes</a>
+        <a href="{{ path('earthquake_prevention') }}">Prévention</a>
+        <a href="{{ path('earthquake_map') }}">Map</a>
     </div>
-
-    <div class="link_navbar_right">
-        <input type="search" placeholder="Recherche">
-        <a href="">Inscription</a>
-        <a href="">Connexion</a>
-    </div>
+  
+        <div class="link_navbar_right">
+            <input type="search" placeholder="Recherche">
+            {% if app.user == null %}
+                <a href="{{ path('register_visitor') }}">Inscription lecteur</a>
+                <a href="{{ path('register_author') }}">Inscription auteur</a>
+                <a href="{{ path('login') }}">Connexion</a>
+            {% else %}
+                <a href="{{ path('user_dashboard', { 'id': app.user.id }) }}">Mon dashboard</a>
+            {% endif %}
+        </div>
 </div>

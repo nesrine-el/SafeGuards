@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 class ArticleController extends AbstractController
 {
@@ -30,6 +31,7 @@ class ArticleController extends AbstractController
         ]);
     }
     #[Route('/article/new', name: 'new')]
+    #[IsGranted('new')]
     public function new(Request $request, ArticleRepository $articleRepository): Response
     {
 
@@ -53,5 +55,5 @@ class ArticleController extends AbstractController
               ]);
   
     }
-
+    
 }

@@ -14,20 +14,34 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 class ArticleController extends AbstractController
 {
     #[Route('/article', name: 'article_index')]
-    public function index(ArticleRepository $articleRepository): Response
+    public function index(ArticleRepository $articleRepository, Request $request): Response
     {
-        $articles = $articleRepository->findAll();
+        $search = $request->query->get('search', '');
+
+        if ($search) {
+            $articles = $articleRepository->createQueryBuilder('a')
+                ->where('a.title LIKE :search OR a.content LIKE :search')
+                ->setParameter('search', '%' . $search . '%')
+                ->getQuery()
+                ->getResult();
+        } else {
+            $articles = $articleRepository->findAll();
+        }
 
         return $this->render('article/index.html.twig', [
             'articles' => $articles,
+            'search' => $search,
         ]);
     }
 
     #[Route('/article/{id}', name: 'article_show', requirements: ['id' => '\d+'])]
-    public function show(Article $article): Response
+    public function show(Article $article, Request $request): Response
     {
+        $search = $request->query->get('search', '');
+
         return $this->render('article/show.html.twig', [
             'article' => $article,
+            'search' => $search,
         ]);
     }
     #[Route('/article/new', name: 'new')]
@@ -49,9 +63,13 @@ class ArticleController extends AbstractController
       
                   return $this->redirectToRoute('templates/article/new.html.twig');
               }
+
+              $search = $request->query->get('search', '');
       
               return $this->render('article/new.html.twig', [
                   'form' => $form,
+                  'search' => $search,
+                  
               ]);
   
     }

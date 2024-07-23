@@ -5,15 +5,32 @@
 
 {% block body %}
 
-	<header>
-		<h1>
-			header
+	<header class= 'mt-4 container text-center'>
+		<h1 class= 'mb-4 text-center'>
+			SAFE GUARDS
 		</h1>
+		<h2>
+			Sécurité et prévention au coeur de notre mission
+		</h2>
+		<div class="lorem">Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia cumque et repellat, architecto laboriosam necessitatibus natus aperiam officiis, deserunt eligendi asperiores laudantium, odio quam commodi esse aliquid consectetur a rerum.</div>
 	</header>
 	<input type="hidden" id="img_path" value="{{ asset('images/tremblementDeTerre.jpeg') }}">
-	<h2>map</h2>
 	<section  class='container d-flex justify-content-center '>
 		<div id="map"></div>
+	</section>
+
+	<section>
+		<div class="d-flex justify-content-around">
+			<div>
+				<h3>Les articlese les plus populaires</h3>
+				{% for article in readarticles %}
+					{{ article.id}}
+				{% endfor %}
+			</div>
+			<div>
+				<h3>Les articles les plus lus</h3>
+			</div>
+		</div>
 	</section>
 
 	<section>

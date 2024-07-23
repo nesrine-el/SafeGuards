@@ -40,4 +40,30 @@ class ArticleRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
+
+     public function sortByReadCount(): array
+        {
+            $qb = $this->createQueryBuilder('a')
+            ->orderBy('a.readCount', 'ASC');
+            ;
+
+            $query = $qb->getQuery();
+            return $query->execute();
+        } 
+
+     public function sortByLikes(): array
+        {
+            $qb = $this->createQueryBuilder('a')
+            ->orderBy('a.readCount', 'ASC');
+            ;
+/*             SELECT article.title, article.content, COUNT(like_article.article_id) as count
+FROM article
+JOIN like_article ON like_article.article_id = article.id 
+GROUP BY article.title, article.id
+ORDER BY count; */
+
+            $query = $qb->getQuery();
+            return $query->execute();
+        } 
+
 }

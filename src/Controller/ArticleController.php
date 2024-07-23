@@ -2,18 +2,16 @@
 
 namespace App\Controller;
  
-use App\Entity\ {
-    Article, Comment}
-    ;
-    use App\Form\ArticleType;
-    use App\Form\CommentType;
-    use Doctrine\ORM\EntityManagerInterface;
-    use App\Repository\ArticleRepository;
-    use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-    use Symfony\Component\HttpFoundation\Request;
-    use Symfony\Component\HttpFoundation\Response;
-    use Symfony\Component\Routing\Annotation\Route;  
-   use Symfony\Component\Security\Http\Attribute\IsGranted;
+use App\Entity\ { Article, Comment } ;
+use App\Form\ArticleType;
+ use App\Form\CommentType;
+use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\ArticleRepository;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;  
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 class ArticleController extends AbstractController
 {
@@ -42,8 +40,8 @@ class ArticleController extends AbstractController
     public function show(Article $article, Request $request, EntityManagerInterface $em): Response
     {
         $search = $request->query->get('search', '');
-        $form = $this->createForm( CommentType::class, $comment );
         $comment = new Comment();
+        $form = $this->createForm( CommentType::class, $comment );
         $comments = $article->getComments();
         $user = $this->getUser() ?? null ;
       

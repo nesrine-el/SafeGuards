@@ -1,26 +1,27 @@
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #0D4655;
+.p-earthquake-card {
+    margin: 0 0 10px;
+    color: #D3E2E5; 
+    line-height: 1.5;
+}
 
-    h1 {
-        color: #FFF; 
-        margin-bottom: 20px;
-        text-align: center;
-    }
+.title-e-card {
+    margin: 0 0 10px;
+    color: #FFF; 
+    font-size: 1.5em;
+}
+
+.container {
+
 
     .articles {
         display: flex;
         flex-direction: column;
-        gap: 20px;
+        
     }
 
     .article {
-        display: flex;
-        flex-direction: column;
+    
         background: #223F50; 
-        padding: 20px;
         border-radius: 8px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         position: relative; 
@@ -28,11 +29,7 @@
         .content {
             flex: 1;
 
-            h2 {
-                margin: 0 0 10px;
-                color: #FFF; 
-                font-size: 1.5em;
-            }
+
 
             .article-p {
                 margin: 0 0 10px;

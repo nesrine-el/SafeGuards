@@ -1,31 +1,45 @@
 {# templates/article/index.html.twig #}
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des Articles{% endblock %}
+{% block title %}Liste des Articles
+{% endblock %}
 
 {% block body %}
-<div class="container">
-    <h1>Liste des Articles</h1>
-    <div class="articles">
-    {% if articles %}
-        {% for article in articles %}
-            <div class="article">
-                <div class="image">
-                    <img src="{{ asset('images/' ~ article.image) }}" alt="{{ article.title }}">
-                </div>
-                <div class="content">
-                    <h2>{{ article.title }}</h2>
-                    <p class="article-p">{{ article.content|slice(0, 150) }}...</p>
-                    <p class="date">Publié le {{ article.createdAt|date('d/m/Y') }} à {{ article.location }}</p>
-                </div>
-                <div class="details">
-                    <a href="{{ path('article_show', {id: article.id}) }}" class="btn">Voir détails</a>
-                </div>
-            </div>
-        {% endfor %}
-    {% else %}
-    <p>Aucun article pour l'instant</p>
-    {% endif %}
-    </div>
-</div>
+	<div class="container">
+		<h1 class="mt-4">Liste des Articles</h1>
+		<div class="articles">
+			{% if articles %}
+				{% for article in articles %}
+                    <a href="{{ path('article_show', {id: article.id}) }}" class="link-card">
+                        <div class="d-flex my-2 card-home pe-4">
+                            <div>
+                                {%  set num = random([1,2,3,4]) %}
+                                {% if num == 1 %}
+                                    {% set url = 'images/c1.jpeg' %}
+                                {% elseif num == 2 %}
+                                    {% set  url = 'images/c2.jpeg' %}
+                                {% elseif num == 3 %}
+                                    {% set url = 'images/c3.jpeg' %}
+                                {% elseif num == 4 %}
+                                    {% set url = 'images/c4.jpeg' %}
+
+                                {% endif %}
+                                <img src=" {{ asset(url) }} " class='card-img-article' alt="">
+                            </div>
+                            <div class="ms-4 pt-4 position-relative">
+                                <h2 class="pb-4">{{ article.title }}</h2>
+                                <p class="article-p">{{ article.content|slice(0, 1000) }}...</p>
+                                <p class="date position-absolute bottom-0">
+                                    Publié le {{ article.createdAt|date('d/m/Y') }}	à {{ article.location }}
+                                </p>
+                            </div>
+                        
+                        </div>
+                    </a>
+				{% endfor %}
+			{% else %}
+				<p>Aucun article pour l'instant</p>
+			{% endif %}
+		</div>
+	</div>
 {% endblock %}

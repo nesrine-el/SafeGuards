@@ -13,14 +13,25 @@
 			</div>
 		{% endfor %}
 		{# message d'erreur
-																		        {% for message in app.flashes('error') %}
-																					<div class="alert alert-error">
-																						{{ message }}
-																					</div>
-																				{% endfor %} #}
+																				        {% for message in app.flashes('error') %}
+																							<div class="alert alert-error">
+																								{{ message }}
+																							</div>
+																						{% endfor %} #}
 		<div class="article-detail">
-			<div class="image">
-				<img src="{{ asset('images/' ~ article.image) }}" alt="{{ article.title }}">
+			<div>
+				{%  set num = random([1,2,3,4]) %}
+				{% if num == 1 %}
+					{% set url = 'images/c1.jpeg' %}
+				{% elseif num == 2 %}
+					{% set  url = 'images/c2.jpeg' %}
+				{% elseif num == 3 %}
+					{% set url = 'images/c3.jpeg' %}
+				{% elseif num == 4 %}
+					{% set url = 'images/c4.jpeg' %}
+
+				{% endif %}
+				<img src=" {{ asset(url) }} " class='afaire' alt="">
 			</div>
 			<div class="content">
 				<h2>
@@ -36,12 +47,12 @@
 			</div>
 		</div>
 		<div class="container">
-		
-				{{ form_start(form) }}
-				{{ form_widget(form) }}
-				<button type="submit" class="btn btn-primary">Soumettre</button>
-				{{ form_end(form) }}
-	
+
+			{{ form_start(form) }}
+			{{ form_widget(form) }}
+			<button type="submit" class="btn btn-primary">Soumettre</button>
+			{{ form_end(form) }}
+
 		</div>
 		<div class="container">
 			<div class='row flex-column-reverse pt-2  '>
@@ -51,11 +62,14 @@
 							{{comment.content|raw}}
 						</div>
 						<div class='mt-4'>
-							<p class='mb-0' >
-								Publié par {{comment.user.firstName}} {{comment.user.lastName}}
+							<p class='mb-0'>
+								Publié par
+								{{comment.user.firstName}}
+								{{comment.user.lastName}}
 							</p>
-							<p class='mb-0' >
-								Le {{comment.createdAt|date("d/m/y H:i")}}
+							<p class='mb-0'>
+								Le
+								{{comment.createdAt|date("d/m/y H:i")}}
 							</p>
 						</div>
 					</div>

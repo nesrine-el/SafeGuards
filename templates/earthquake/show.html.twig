@@ -49,33 +49,27 @@
 		</div>
 	</section>
 
-	<section>
-		<div class="articles mx-5 mt-5 text-light">
-			{% for i in 0..1 %}
-				<div class="article">
-					<div class="article__img-container image ">
-						<img src="{{ asset('images/' ~ articles[i].image) }}" alt="{{ articles[i].title }}">
-					</div>
-					<div class="article__content">
-						<h2>{{ articles[i].title }}</h2>
-						<p class="article-p">{{ articles[i].content|slice(0, 150) }}...</p>
-					</div>
-				</div>
 
-			{% endfor %}
-		</div>
-	</section>
-
-	<style>
-        /* Style pour le conteneur du graphique */
-        #chart {
-            width: 1000px; /* ou spécifie une largeur fixe comme '600px' */
-            height: 200px; /* ou spécifie une hauteur fixe comme '400px' */
-        }
-    </style>
-
-	<section data-entry="{{earthquake.id}}" >
+	<section class="graphEarthquake d-flex">
 		<div id="chart"></div>
+		<div>
+			<p>
+				Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consectetur culpa assumenda praesentium in magni corporis modi impedit debitis nam voluptates 
+				tenetur sapiente, obcaecati atque tempora fugiat deleniti natus vel sed enim, ea, quisquam officia. Itaque asperiores commodi totam quam. Officia placeat 
+				illo veniam architecto id iusto corporis impedit libero amet dolore, sunt, esse voluptatibus. Ab soluta labore aperiam ducimus deleniti impedit nesciunt 
+				quis a magnam sapiente, ullam nostrum, error placeat neque debitis corrupti dolorem aliquid unde temporibus. Aut dignissimos minus vel deserunt vero quibusdam? 
+				Voluptas quis soluta ad cum aliquid temporibus quibusdam cupiditate impedit consequuntur minus sit odio, itaque facere suscipit nobis quos pariatur natus accusantium 
+				praesentium ducimus mollitia dolorem! Dolor optio nesciunt impedit corrupti sint voluptatibus excepturi tenetur deserunt, corporis expedita ipsa modi debitis architecto,
+				voluptates, est repellendus esse enim maiores et facere incidunt voluptatem pariatur rem labore? Hic, illo? Amet repellendus asperiores, vel iure cum repellat accusantium natus 
+				similique dolores earum sequi provident doloremque cupiditate! Possimus corrupti amet, earum doloribus eligendi cumque quam eveniet quas expedita fuga est vel autem maxime.
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, fuga?
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio officiis ipsam, velit natus dolorem expedita 
+				saepe excepturi ducimus accusantium doloremque veniam non eius, vitae deleniti dolorum facere ab similique tenetur dolor illum quibusdam 
+				laboriosam distinctio debitis praesentium. Quisquam aliquam maiores eos esse iure inventore labore, recusandae accusamus quam sed iusto totam 
+				ad commodi deserunt voluptatibus repellat libero provident officia exercitationem ex eum dicta, animi iste. Vero repellendus sint blanditiis quiatque aut, ipsum odit, ad fugit vel 
+				corporis temporibus molestiae nihil vitae veniam alias adipisci fugiat quo consequuntur molestias autem dicta pariatur. Modi dignissimos debitis nemo qui cumque autem odio.
+			</p>
+		</div>
 	</section>
 	
 	<section>

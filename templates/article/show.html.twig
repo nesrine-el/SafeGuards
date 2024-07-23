@@ -1,27 +1,55 @@
 {# templates/article/show.html.twig #}
 {% extends 'base.html.twig' %}
 
-{% block title %}Détail de l'Article{% endblock %}
+{% block title %}Détail de l'Article
+{% endblock %}
 
 {% block body %}
-<div class="container">
-    <h1>Titre de l'Article</h1>
-    <div class="article-detail">
-        <div class="image">
-            <img src="{{ asset('images/' ~ article.image) }}" alt="{{ article.title }}">
-        </div>
-        <div class="content">
-            <h2>{{ article.title }}</h2>
-            <p>{{ article.content }}</p>
-            <div class="actions">
-                <a href="#" class="icon-star"></a>
-                <a href="#" class="icon-heart"></a>
-            </div>
-            <div class="buttons">
-                <button class="btn">Commenter</button>
-                <button class="btn">Contacter</button>
-            </div>
-        </div>
-    </div>
-</div>
+	<div class="container">
+		<h1>Titre de l'Article</h1>
+		{% for message in app.flashes('success') %}
+			<div class="alert alert-success">
+				{{ message }}
+			</div>
+		{% endfor %}
+		{# message d'erreur
+						        {% for message in app.flashes('error') %}
+									<div class="alert alert-error">
+										{{ message }}
+									</div>
+								{% endfor %} #}
+		<div class="article-detail">
+			<div class="image">
+				<img src="{{ asset('images/' ~ article.image) }}" alt="{{ article.title }}">
+			</div>
+			<div class="content">
+				<h2>{{ article.title }}</h2>
+				<p>{{ article.content }}</p>
+				<div class="actions">
+					<a href="#" class="icon-star"></a>
+					<a href="#" class="icon-heart"></a>
+				</div>
+
+
+				{{ form_start(form) }}
+				{{ form_widget(form) }}
+				<button type="submit" class="btn btn-primary">Soumettre</button>
+				{{ form_end(form) }}
+				<div class="buttons">
+					<button class="btn">Contacter</button>
+				</div>
+
+
+				{% for comment in comments %}
+					<div>{{comment.content|raw}}</div>
+					<p>Publié par
+						{{comment.user.firstName}}
+						{{comment.user.lastName}}</p>
+					<p>Le
+						{{comment.createdAt|date("d/m/y H:i")}}</p>
+
+				{% endfor %}
+			</div>
+		</div>
+	</div>
 {% endblock %}

@@ -42,5 +42,14 @@ class EarthquakeController extends AbstractController
             'controller_name' => 'EarthquakeController',
         ]);
     }
+
+    #[Route('/earthquake/map', name: 'earthquake_map')]
+    public function map(): Response
+    {
+        
+        return $this->render('earthquake/map.html.twig', [
+            'controller_name' => 'EarthquakeController',
+        ]);
+    }
    
 }

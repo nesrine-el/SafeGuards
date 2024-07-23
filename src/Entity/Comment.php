@@ -27,6 +27,7 @@ class Comment
     #[ORM\ManyToOne(inversedBy: 'comments')]
     private ?User $user = null;
 
+
     public function getId(): ?int
     {
         return $this->id;
@@ -79,4 +80,5 @@ class Comment
 
         return $this;
     }
+
 }

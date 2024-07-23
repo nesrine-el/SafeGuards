@@ -10,7 +10,9 @@
     </div>
   
         <div class="link_navbar_right">
-            <input type="search" placeholder="Recherche">
+            <form method="get" action="{{ path('article_index') }}">
+                <input type="search" name="search" placeholder="Recherche" value="{{ search }}">
+            </form>
             {% if app.user == null %}
                 <a href="{{ path('register_visitor') }}">Inscription lecteur</a>
                 <a href="{{ path('register_author') }}">Inscription auteur</a>

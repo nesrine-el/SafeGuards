@@ -75,10 +75,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: Comment::class, mappedBy: 'user')]
     private Collection $comments;
 
+    /**
+     * @var Collection<int, LikeArticle>
+     */
+    #[ORM\OneToMany(targetEntity: LikeArticle::class, mappedBy: 'user')]
+    private Collection $likeArticles;
+
     public function __construct()
     {
         $this->articles = new ArrayCollection();
         $this->comments = new ArrayCollection();
+        $this->likeArticles = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -322,5 +329,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         }
 
         return $this;
+    }
+
+    /**
+     * @return Collection<int, LikeArticle>
+     */
+    public function getLikeArticle(): Collection
+    {
+        return $this->likeArticles;
     }
 }

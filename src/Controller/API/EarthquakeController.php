@@ -3,7 +3,7 @@
 namespace App\Controller\API;
 
 use App\Entity\Earthquake;
-use App\ModelEarthquakes;
+use App\Services\ModelEarthquakes;
 use App\Repository\EarthquakeRepository;
 use PDO;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

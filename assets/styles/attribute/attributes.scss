@@ -1,0 +1,25 @@
+body {
+    background-color: $dark-blue !important; 
+    margin: 0; 
+    padding: 0;
+    color: white !important;
+  }
+
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+h1 {
+    color: #FFFFFF;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    color: #FFFFFF;
+}
+

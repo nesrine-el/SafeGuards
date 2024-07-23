@@ -33,4 +33,7 @@ return [
         'version' => '1.9.4',
         'type' => 'css',
     ],
+    'apexcharts' => [
+        'version' => '3.51.0',
+    ],
 ];

@@ -1,25 +1,4 @@
 // assets/styles/earthquake_show.scss
-body {
-    
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #2A3F54;
-    color: #FFFFFF;
-}
-
-h1 {
-    color: #FFFFFF;
-    font-size: 2em;
-    margin-bottom: 20px;
-    text-align: center;
-}
 
 .article-detail {
     display: flex;
@@ -94,3 +73,43 @@ h1 {
 .article-detail .buttons .btn:hover {
     background-color: #4A89DC;
 }
+
+.jauge div {
+
+
+    color: white;
+    font-weight: bold;
+    flex: 1;
+    
+}
+.jauge {
+    display: flex;
+    flex-direction: column;
+    height: 150px;
+}
+.jauge__part-1 {
+    display: flex;
+    justify-content: space-between;
+}
+.jauge__part-2 {
+    display: flex;
+    height: 80px;
+}
+
+.articles {
+    display: flex;
+    flex-direction: column;
+}
+
+.article {
+    display: flex;
+    flex-direction: row;
+
+    &:nth-child(2n) {
+        flex-direction: row-reverse;
+    }
+}
+
+.article__img-container {}
+
+.article__content {}

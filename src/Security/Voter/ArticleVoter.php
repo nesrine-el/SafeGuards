@@ -22,17 +22,19 @@ class ArticleVoter extends Voter
     public function __construct(Security $security)
     {
         $this->security = $security;
+    
     }
 
     protected function supports(string $attribute, mixed $subject): bool
     {
+     
         if (!in_array($attribute, [self::VIEW, self::EDIT, self::SHOW, self::NEW])) {
             return false;
         }
 
-        if (!$subject instanceof Article) {
-            return false;
-        }
+        // if (!$subject instanceof Article) {
+        //     return false;
+        // }
 
         return true;
     }
@@ -40,6 +42,7 @@ class ArticleVoter extends Voter
     protected function voteOnAttribute(string $attribute, mixed $subject, TokenInterface $token): bool
     {
         $user = $token->getUser();
+       
         if (!$user instanceof UserInterface || !$user instanceof User) {
             return false;
         }
@@ -49,7 +52,7 @@ class ArticleVoter extends Voter
 
         return match($attribute) {
             self::VIEW => $this->canView($article, $user),
-            self::NEW => $this->canNew($article, $user),
+            self::NEW => $this->canNew($user),
             self::EDIT => $this->canEdit($article, $user),
             self::SHOW => $this->canShow($article, $user),
             default => throw new \LogicException('This code should not be reached!')
@@ -78,8 +81,8 @@ class ArticleVoter extends Voter
             return true;
         }
         // Assuming the Article entity has a getUser method
-        // return  $user === ($article->getUser() && in_array( 'USER_AUTHOR',  $user->getRoles()));
-        return true;
+         return  $user === ($article->getUser() && in_array( 'USER_AUTHOR',  $user->getRoles()));
+        //return true;
         
     }
 
@@ -89,7 +92,7 @@ class ArticleVoter extends Voter
         return true;
     }
 
-    private function canNew(Article $article, User $user): bool
+    private function canNew(User $user): bool
     {
 
 
@@ -98,8 +101,10 @@ class ArticleVoter extends Voter
         }
 
         // Assuming the Article entity has an isPrivate method
-        // return  $user === ($article->getUser() && in_array( 'USER_AUTHOR',  $user->getRoles()));
-        return true;
+       return in_array( 'ROLE_AUTHOR',  $user->getRoles()) ;
+
+       
+        //return true;
     }
     
 

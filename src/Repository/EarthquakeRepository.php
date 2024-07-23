@@ -4,7 +4,10 @@ namespace App\Repository;
 
 use App\Entity\Earthquake;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\HttpFoundation\Request;
+
 
 /**
  * @extends ServiceEntityRepository<Earthquake>
@@ -15,6 +18,17 @@ class EarthquakeRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Earthquake::class);
     }
+
+    public function paginationEarthquakes(int $page, int $limit): Paginator {
+        return new Paginator($this->createQueryBuilder('e')
+        ->setFirstResult(($page ) * $limit)
+        ->setMaxResults($limit)
+        ->getQuery()
+        ->setHint(Paginator::HINT_ENABLE_DISTINCT, false),
+        false
+    )
+    ;
+    } 
 
     //    /**
     //     * @return Earthquake[] Returns an array of Earthquake objects

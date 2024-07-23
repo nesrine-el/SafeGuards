@@ -1,0 +1,54 @@
+/* assets/styles/style.scss */
+
+.create-article-btn {
+    background-color: #ccc;
+    color: #023450;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    display: block;
+    margin: 20px 0;
+}
+
+.my-articles {
+    margin-top: 20px;
+}
+
+.article-card {
+    display: flex;
+    justify-content: space-between;
+    background-color: #ccc;
+    color: #000;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.article-info h3 {
+    margin: 0;
+}
+
+.article-info p {
+    margin: 5px 0 0;
+}
+
+.article-stats p {
+    margin: 0;
+}
+
+.favorites {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.favorite-articles, .favorite-authors {
+    width: 48%;
+}
+
+.favorite-item {
+    background-color: #ccc;
+    color: #000;
+    padding: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}

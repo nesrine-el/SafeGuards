@@ -41,9 +41,19 @@ class Article
     #[ORM\OneToMany(targetEntity: Comment::class, mappedBy: 'article')]
     private Collection $comments;
 
+    /**
+     * @var Collection<int, LikeArticle>
+     */
+    #[ORM\OneToMany(targetEntity: LikeArticle::class, mappedBy: 'article')]
+    private Collection $likeArticles;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $readCount = null;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
+        $this->likeArticles = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -149,6 +159,48 @@ class Article
                 $comment->setArticle(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, LikeArticle>
+     */
+    public function getLikeArticles(): Collection
+    {
+        return $this->likeArticles;
+    }
+
+    public function addLikeArticle(LikeArticle $likeArticle): static
+    {
+        if (!$this->likeArticles->contains($likeArticle)) {
+            $this->likeArticles->add($likeArticle);
+            $likeArticle->setArticle($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLikeArticle(LikeArticle $likeArticle): static
+    {
+        if ($this->likeArticles->removeElement($likeArticle)) {
+            // set the owning side to null (unless already changed)
+            if ($likeArticle->getArticle() === $this) {
+                $likeArticle->setArticle(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getReadCount(): ?int
+    {
+        return $this->readCount;
+    }
+
+    public function setReadCount(?int $readCount): static
+    {
+        $this->readCount = $readCount;
 
         return $this;
     }

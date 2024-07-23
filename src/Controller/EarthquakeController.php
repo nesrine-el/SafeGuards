@@ -5,18 +5,27 @@ namespace App\Controller;
 use App\Entity\Earthquake;
 use App\Repository\EarthquakeRepository;
 use App\Repository\ArticleRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
 class EarthquakeController extends AbstractController
 {
     #[Route('/earthquake', name: 'app_earthquake')]
-    public function index(): Response
+    public function index(EarthquakeRepository $earthquakeRepository, PaginatorInterface $paginator, Request $request): Response
     {
-        
+        $queryBuilder = $earthquakeRepository->createQueryBuilder('e');
+
+        $pagination = $paginator->paginate(
+            $queryBuilder, /* query NOT result */
+            $request->query->getInt('page', 1), /* page number */
+            10 /* limit per page */
+        );
+
         return $this->render('earthquake/index.html.twig', [
-            'controller_name' => 'EarthquakeController',
+            'pagination' => $pagination,
         ]);
     }
    

@@ -21,22 +21,22 @@ class HomeController extends AbstractController
     #[Route('/', name: 'home')]
     public function index(Security $security, EarthquakeRepository $earthquakeRepository , PaginatorInterface $paginator, Request $request, ArticleRepository $articleRepository): Response
     {
-
+        
         $earthquakes = $earthquakeRepository->findAll();
         $SortedByReadArticles = $articleRepository->sortByReadCount();
-
+        $MostLikedArticles = $articleRepository->sortByLikes();
+ 
         $pagination = $paginator->paginate(
             $earthquakes, /* query NOT result */
             $request->query->getInt('page', 1), /*page number*/
             10 /*limit per page*/
         );
-    
- 
         
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
             'pagination' => $pagination,
-            'readarticles' => $SortedByReadArticles
+            'readarticles' => $SortedByReadArticles,
+            'likedarticles' => $MostLikedArticles,
 
         ]);
      }

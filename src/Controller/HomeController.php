@@ -22,7 +22,12 @@ class HomeController extends AbstractController
     {
 
         $query = $earthquakeRepository->findAll();
-    
+        $user = $this->getUser();
+        if ($user) {
+            $role = in_array( 'USER_AUTHOR',  $user->getRoles());
+        } else {
+            $role ='';
+        }
         $pagination = $paginator->paginate(
             $query, /* query NOT result */
             $request->query->getInt('page', 1), /*page number*/
@@ -33,6 +38,7 @@ class HomeController extends AbstractController
         
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
+            'role' => $role,
             'pagination' => $pagination
 
         ]);

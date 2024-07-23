@@ -27,7 +27,6 @@ use App\Entity\ {
                 $comment->setUser( $authors[ 0 ] );
                 $manager->persist( $comment );
             }
-            
 
             foreach ( $articlesData as $data ) {
                 $idAuthor = \random_int( 0, $nbAuthor -1 )  ;
@@ -50,22 +49,21 @@ use App\Entity\ {
                     $count++;
                 }
                 $manager->persist( $article );
-                
-                // creer des likes , 
-                for ($i=0; $i < \random_int( 0, $nbUser -1 ); $i++) { 
-                    $user = $users[$i];
+
+                // creer des likes,
+                for ( $i = 0; $i < \random_int( 0, $nbUser -1 );
+                $i++ ) {
+
+                    $user = $users[ $i ];
                     $likeArticle = new LikeArticle();
-                    $likeArticle->setArticle($article);
-                    $likeArticle->setUser($user);
+                    $likeArticle->setArticle( $article );
+                    $likeArticle->setUser( $user );
                     $manager->persist( $likeArticle );
                 }
 
             }
 
             $manager->flush();
-
-            
-
 
         }
 
@@ -99,8 +97,63 @@ use App\Entity\ {
                 ],
                 [
                     'title' => 'Séismes : Comment se préparer ?',
-                    'content' => 'Les séismes peuvent survenir sans avertissement, il est donc crucial de se préparer en ayant un plan d\'évacuation et en sécurisant les objets lourds dans les bâtiments.',
-                    'createdAt' => new \DateTime('now - 20 days'),
+                    'content' => "
+                 Les Tremblements de Terre : Comprendre les Forces de la Nature
+Introduction
+Les tremblements de terre, ou séismes, sont des phénomènes naturels parmi les plus impressionnants et destructeurs que la Terre puisse offrir. Ils sont responsables de la modification des paysages, de la destruction des infrastructures et, tragiquement, de la perte de vies humaines. Comprendre les causes, les mécanismes et les impacts des tremblements de terre est essentiel pour mieux se préparer à ces événements inévitables.
+
+Les Causes des Tremblements de Terre
+Les tremblements de terre se produisent principalement en raison de la libération soudaine d'énergie dans la croûte terrestre. Cette énergie est accumulée par le mouvement des plaques tectoniques, les grandes sections de la lithosphère terrestre qui flottent sur l'asthénosphère plus fluide. Lorsque le stress accumulé dépasse la résistance des roches, une rupture se produit le long des failles, libérant l'énergie sous forme d'ondes sismiques.
+
+Les failles sont des fractures dans la croûte terrestre où les plaques se déplacent les unes par rapport aux autres. Il existe plusieurs types de failles, chacune associée à des mouvements spécifiques :
+
+Failles normales : associées à l'extension, où la croûte s'étire.
+Failles inverses : associées à la compression, où la croûte se contracte.
+Failles transformantes : associées au glissement horizontal, où les plaques se déplacent latéralement.
+Les séismes peuvent également être provoqués par des activités humaines telles que l'extraction minière, la géothermie ou la fracturation hydraulique, bien que ces événements soient généralement de moindre ampleur.
+
+La Mesure des Séismes
+La magnitude d'un tremblement de terre est quantifiée par l'échelle de Richter ou, plus couramment aujourd'hui, l'échelle de magnitude de moment ( Mw ). Ces échelles mesurent l'énergie libérée lors d'un séisme. Par exemple, un séisme de magnitude 5 libère environ 31 fois plus d'énergie qu'un séisme de magnitude 4.
+
+En plus de la magnitude, l'intensité des secousses sismiques ressenties à la surface est mesurée par l'échelle de Mercalli modifiée ( MMI ). Contrairement à la magnitude, l'intensité est subjective et dépend de nombreux facteurs, notamment la distance de l'épicentre, la profondeur du foyer et la nature des sols locaux.
+
+Les Effets des Tremblements de Terre
+Les effets des tremblements de terre peuvent être dévastateurs et variés. Ils incluent :
+
+Destruction des Infrastructures : Les bâtiments, ponts et routes peuvent s'effondrer sous l'effet des secousses, surtout s'ils ne sont pas conçus pour résister aux séismes. Les infrastructures essentielles comme les hôpitaux et les écoles peuvent également être gravement endommagées.
+
+Glissements de Terrain et Avalanches : Les secousses peuvent déclencher des glissements de terrain dans les zones montagneuses, emportant tout sur leur passage. Les avalanches de neige peuvent également être provoquées par des séismes.
+
+Tsunamis : Les tremblements de terre sous-marins peuvent générer des tsunamis, des vagues gigantesques qui déferlent sur les côtes, causant des destructions massives et des pertes de vies humaines.
+
+Liquéfaction des Sols : Dans certaines conditions, les secousses peuvent provoquer la liquéfaction des sols saturés en eau, transformant le sol en une sorte de boue liquide incapable de soutenir les structures.
+
+Les Régions Sismiques du Monde
+Certaines régions du monde sont particulièrement sujettes aux tremblements de terre en raison de leur position géologique. Parmi les zones les plus actives, on trouve :
+
+La Ceinture de Feu du Pacifique : Une région en forme de fer à cheval dans le bassin du Pacifique, connue pour sa forte activité volcanique et sismique. Des pays comme le Japon, l'Indonésie et le Chili sont fréquemment touchés par des séismes majeurs.
+
+                    La Faille de San Andreas : Une faille transformante majeure en Californie, USA, responsable de nombreux séismes importants, dont celui de San Francisco en 1906.
+
+                    La Région de l'Himalaya : La collision entre la plaque indienne et la plaque eurasienne génère de nombreux séismes dans cette région, affectant des pays comme le Népal et l'Inde.
+
+                    La Vallée du Rift en Afrique de l'Est : Une zone d'extension où la croûte terrestre se fissure et s'amincit, entraînant une activité sismique notable.
+
+La Prévention et la Préparation
+La prévention des tremblements de terre est impossible, mais il est possible de minimiser leurs impacts par la préparation et la construction adaptée. Voici quelques mesures cruciales :
+
+Construction Antisismique : L'ingénierie moderne permet de concevoir des bâtiments capables de résister aux secousses sismiques. Cela inclut l'utilisation de matériaux flexibles, de fondations amortissantes et de techniques de construction qui permettent aux structures de se déformer sans s'effondrer.
+
+                    Plans d'Évacuation et d'Urgence : Les communautés dans les zones sismiques doivent avoir des plans d'évacuation et des exercices réguliers pour assurer que tout le monde sait quoi faire en cas de séisme. Les kits de survie contenant de la nourriture, de l'eau, des médicaments et des outils de premiers secours sont également essentiels.
+
+                    Systèmes d'Alerte Précoce : Des systèmes d'alerte précoce peuvent détecter les premiers signes d'un séisme et envoyer des alertes avant que les secousses ne frappent, permettant aux gens de se mettre en sécurité. Des pays comme le Japon ont développé des technologies avancées dans ce domaine.
+
+Éducation et Sensibilisation : Informer le public sur les risques sismiques et les mesures de sécurité peut sauver des vies. Des campagnes d'information et des programmes éducatifs dans les écoles sont essentiels pour sensibiliser les populations aux comportements à adopter avant, pendant et après un séisme.
+
+                    Conclusion
+                    Les tremblements de terre sont des forces de la nature inévitables et potentiellement dévastatrices. Cependant, grâce aux avancées scientifiques et technologiques, il est possible de mieux comprendre ces phénomènes et de réduire leurs impacts destructeurs. La préparation, l'éducation et la construction adaptée sont des éléments clés pour assurer la sécurité des populations vivant dans des zones sismiques. En fin de compte, apprendre à coexister avec cette réalité géologique est une nécessité pour de nombreuses régions du monde.
+                    ",
+                    'createdAt' => new \DateTime( 'now - 20 days' ),
                     'image' => 'image3.jpg',
                     'location' => 'Nice',
                     'readCount' => 22
@@ -116,7 +169,7 @@ use App\Entity\ {
                 [
                     'title' => 'Canicules : Prévention et précautions',
                     'content' => 'Les canicules peuvent être mortelles, surtout pour les personnes vulnérables. Il est important de rester hydraté et de rester à l\'abri de la chaleur excessive.',
-                    'createdAt' => new \DateTime('now - 15 days'),
+                    'createdAt' => new \DateTime( 'now - 15 days' ),
                     'image' => 'image5.jpg',
                     'location' => 'Lyon',
                     'readCount' => 45
@@ -124,7 +177,7 @@ use App\Entity\ {
                 [
                     'title' => 'Préparation aux ouragans',
                     'content' => 'Les ouragans peuvent causer des destructions massives. Avoir un plan d\'évacuation et un kit d\'urgence prêt peut sauver des vies.',
-                    'createdAt' => new \DateTime('now - 25 days'),
+                    'createdAt' => new \DateTime( 'now - 25 days' ),
                     'image' => 'image6.jpg',
                     'location' => 'La Réunion',
                     'readCount' => 70
@@ -148,7 +201,7 @@ use App\Entity\ {
                 [
                     'title' => 'Sécurité en cas d\'avalanche',
                     'content' => 'Les avalanches peuvent être mortelles pour les skieurs et les alpinistes. Connaître les zones à risque et les techniques de survie est crucial.',
-                    'createdAt' => new \DateTime('now - 18 days'),
+                    'createdAt' => new \DateTime( 'now - 18 days' ),
                     'image' => 'image9.jpg',
                     'location' => 'Grenoble',
                     'readCount' => 32
@@ -172,7 +225,7 @@ use App\Entity\ {
                 [
                     'title' => 'Prévention des incendies domestiques',
                     'content' => 'Les incendies domestiques peuvent être dévastateurs. Des détecteurs de fumée et des plans d\'évacuation peuvent sauver des vies.',
-                    'createdAt' => new \DateTime('now - 14 days'),
+                    'createdAt' => new \DateTime( 'now - 14 days' ),
                     'image' => 'image12.jpg',
                     'location' => 'Marseille',
                     'readCount' => 10
@@ -180,7 +233,7 @@ use App\Entity\ {
                 [
                     'title' => 'Les risques liés aux glissements de terrain',
                     'content' => 'Les glissements de terrain peuvent détruire des habitations et des infrastructures. Connaître les zones à risque et les mesures de prévention est crucial.',
-                    'createdAt' => new \DateTime('now - 21 days'),
+                    'createdAt' => new \DateTime( 'now - 21 days' ),
                     'image' => 'image13.jpg',
                     'location' => 'Nice',
                     'readCount' => 45
@@ -188,11 +241,11 @@ use App\Entity\ {
                 [
                     'title' => 'Les tempêtes de neige et leurs dangers',
                     'content' => 'Les tempêtes de neige peuvent bloquer les routes et causer des pannes de courant. Il est important de se préparer en cas de tempête.',
-                    'createdAt' => new \DateTime('now - 9 days'),
+                    'createdAt' => new \DateTime( 'now - 9 days' ),
                     'image' => 'image14.jpg',
                     'location' => 'Grenoble',
                     'readCount' => 10
-                 ],
+                ],
                 [
                     'title' => 'Sécurité en mer : Prévention des accidents',
                     'content' => 'Les accidents en mer peuvent être évités grâce à une bonne préparation et à l\'utilisation de dispositifs de sécurité appropriés.',
@@ -229,7 +282,7 @@ use App\Entity\ {
                 [
                     'title' => 'Les tsunamis : Causes et prévention',
                     'content' => 'Les tsunamis peuvent causer des destructions sur les zones côtières. La surveillance et l\'alerte précoce sont essentielles pour sauver des vies.',
-                    'createdAt' => new \DateTime('now - 17 days'),
+                    'createdAt' => new \DateTime( 'now - 17 days' ),
                     'image' => 'image19.jpg',
                     'location' => 'Guadeloupe',
                     'readCount' => 45
@@ -237,7 +290,7 @@ use App\Entity\ {
                 [
                     'title' => 'Les impacts des tempêtes de sable',
                     'content' => 'Les tempêtes de sable peuvent affecter la santé et perturber les transports. Des mesures de protection et de prévention sont nécessaires.',
-                    'createdAt' => new \DateTime('now - 24 days'),
+                    'createdAt' => new \DateTime( 'now - 24 days' ),
                     'image' => 'image20.jpg',
                     'location' => 'Lille',
                     'readCount' => 50
@@ -245,7 +298,7 @@ use App\Entity\ {
                 [
                     'title' => 'Prévention des inondations fluviales',
                     'content' => 'Les inondations fluviales peuvent causer des dommages importants aux infrastructures et aux habitations. Des systèmes de digues et de barrages peuvent aider à les prévenir.',
-                    'createdAt' => new \DateTime('now - 4 days'),
+                    'createdAt' => new \DateTime( 'now - 4 days' ),
                     'image' => 'image21.jpg',
                     'location' => 'Paris',
                     'readCount' => 46
@@ -253,7 +306,7 @@ use App\Entity\ {
                 [
                     'title' => 'Les conséquences des tempêtes de grêle',
                     'content' => 'Les tempêtes de grêle peuvent causer des dégâts matériels considérables. Il est important de protéger les véhicules et les habitations.',
-                    'createdAt' => new \DateTime('now - 10 days'),
+                    'createdAt' => new \DateTime( 'now - 10 days' ),
                     'image' => 'image22.jpg',
                     'location' => 'Marseille',
                     'readCount' => 80

@@ -4,7 +4,6 @@ if (document.location.href == "http://127.0.0.1:8000/" || document.location.href
     
     let lat = document.getElementById('map').dataset.lat ? parseFloat(document.getElementById('map').dataset.lat) : 0
     let long = document.getElementById('map').dataset.long ? parseFloat(document.getElementById('map').dataset.long) : 0
-    console.log(lat)
 
     let map = L.map('map').setView([lat, long],200);
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {

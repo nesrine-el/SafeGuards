@@ -5,7 +5,7 @@
 
 {% block body %}
 <div class="container">
-    <h1>Liste des Catastrophes</h1>
+    <h1 class='my-4'>Liste des Catastrophes</h1>
     <div class="articles">
         {% for earthquake in pagination %}
             <a href="{{ path('earthquake_show', {id: earthquake.id}) }}">

@@ -5,7 +5,7 @@
  * which should already be in your base.html.twig.
  */
 
-console.log('debut js')
+console.log('debut js');
 
 import './styles/app.scss';
 
@@ -20,5 +20,6 @@ import { Dropdown } from 'bootstrap';
 // leaflet map
 import './js/map.js';
 import './js/apexcharts.js';
+import './js/marker.js';
 
 console.log('Fin du js');

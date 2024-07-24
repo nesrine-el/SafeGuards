@@ -1,4 +1,5 @@
 <div class="navbar">
+
 	<div class="link_navbar">
 		<a href="{{ path('home') }}">
 			<img src="{{asset('images/Logo_SafeGuards.png')}}" alt="">
@@ -20,6 +21,8 @@
 			<a href="{{ path('login') }}">Connexion</a>
 		{% else %}
 			<a href="{{ path('user_dashboard', { 'id': app.user.id }) }}">Mon dashboard</a>
+      <a href="{{ path('app_logout') }}">Se déconnecter</a>
 		{% endif %}
 	</div>
 </div>
+

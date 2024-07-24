@@ -40,4 +40,15 @@ class LikeArticleRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
+    public function findByArticleAndUser(int $id_user, int $id_article): ?LikeArticle
+    {
+        return $this->createQueryBuilder('l')
+            ->andWhere('l.user = :user_id  ')
+            ->andWhere('l.article = :article_id  ')
+            ->setParameter('user_id', $id_user)
+            ->setParameter('article_id', $id_article)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
 }

@@ -36,7 +36,6 @@ class EarthquakeController extends AbstractController
 
         $model = new ModelEarthquakes(new PDO('mysql:host=127.0.0.1; dbname=SafeGuards', 'root', 'root'));
 
-
         $model->loadSavedModel('earthquakes_model_66.rbx');
         $value = $model->predict($lat, $long);
         return $this->json($value);

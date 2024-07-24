@@ -58,8 +58,9 @@ if (document.location.href == "http://127.0.0.1:8000/" || document.location.href
             }).addTo(map).on("click", circleClick);
 
             function circleClick(e) {
+
                 let clickedCircle = e.target;
-                console.log(img_path);
+
               clickedCircle.bindPopup(`
               <h3>Tremblement de terre</h3>
               <div class='d-flex justify-content-center'> 

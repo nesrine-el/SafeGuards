@@ -3,32 +3,18 @@
 
 .article-detail {
     display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
     background-color: #1A2732;
-    padding: 20px;
+    
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .article-detail .image {
-    flex: 1;
-    margin-right: 20px;
-    background-color: #BDC3C7;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #2C3E50;
-    font-weight: bold;
-    border-radius: 5px;
-    overflow: hidden;
+   min-width: 300px;
+   min-height: 300px;
 }
 
-.article-detail .image img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-}
+
 
 .article-detail .content {
     flex: 2;

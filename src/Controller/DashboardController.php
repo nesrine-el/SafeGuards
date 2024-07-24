@@ -14,13 +14,9 @@ class DashboardController extends AbstractController
     public function dashboard(int $id, ArticleRepository $articleRepository, EntityManagerInterface $entityManager): Response
     {
         $user = $entityManager->getRepository(User::class)->find($id);
-
+        $articles = $user->getArticles();
         
-        $articles = [
-            ['title' => 'Titre de mon article', 'date' => 'Date de création', 'likes' => 15, 'comments' => 15],
-            ['title' => 'Titre de mon article', 'date' => 'Date de création', 'likes' => 15, 'comments' => 15],
-            ['title' => 'Titre de mon article', 'date' => 'Date de création', 'likes' => 15, 'comments' => 15],
-        ];
+
 
         $favoriteArticles = ['Article 1', 'Article 2', 'Article 3'];
         $favoriteAuthors = ['Auteur 1', 'Auteur 2', 'Auteur 3'];

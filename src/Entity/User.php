@@ -334,7 +334,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @return Collection<int, LikeArticle>
      */
-    public function getLikeArticle(): Collection
+    public function getLikeArticles(): Collection
     {
         return $this->likeArticles;
     }

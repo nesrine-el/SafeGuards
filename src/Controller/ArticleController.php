@@ -105,4 +105,35 @@ class ArticleController extends AbstractController
 
         ]);
     }
+
+
+    #[Route('/article/{id}/edit', name: 'article_edit')]
+    public function edit(Request $request, ArticleRepository $articleRepository, EntityManagerInterface $em, Article $article): Response
+    {
+
+        
+        $user = $this->getUser();
+
+        $form = $this->createForm(ArticleType::class, $article);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            // $form->getData() holds the submitted values
+            // but, the original `$task` variable has also been updated
+            $article = $form->getData();
+            $em->persist($article);
+            $em->flush();
+
+            return $this->redirectToRoute('user_dashboard', ['id' => $user->getId()]);
+
+        }
+
+      
+
+        return $this->render('article/edit.html.twig', [
+            'form' => $form,
+         
+
+        ]);
+    }
 }

@@ -6,31 +6,102 @@
 <div class="container">
     <a href= "{{ path('article_new')  }}" class="btn btn-primary mt-4">Créer un article</a>
     <div class="my-articles">
-        <h2>Mes articles</h2>
+        <h2 class='mb-4'>Mes articles</h2>
         {% for article in articles %}
-        <div class="article-card">
-            <div class="article-info">
-                <h3>{{ article.title }}</h3>
-                  <p>{{  article.createdAt|format_datetime(locale='FR') }} </p>
-            </div>
-            <div class="article-stats">
-                <p>nombre de like : {{ article.likeArticles|length }}</p>
-                <p>nombre de commentaire : {{ article.comments|length }}</p>
-            </div>
-        </div>
+        <a href="{{ path('article_edit', { id: article.id} ) }}">
+            <div class="article-detail">
+                <div>
+                    {%  set num = random([1,2,3,4]) %}
+                    {% if num == 1 %}
+                        {% set url = 'images/c1.jpeg' %}
+                    {% elseif num == 2 %}
+                        {% set  url = 'images/c2.jpeg' %}
+                    {% elseif num == 3 %}
+                        {% set url = 'images/c3.jpeg' %}
+                    {% elseif num == 4 %}
+                        {% set url = 'images/c4.jpeg' %}
+
+                    {% endif %}
+                    <img src=" {{ asset(url) }} " class='card-img-article-show' alt="">
+                </div>
+                <div class="d-flex justify-content-between w-100 pe-4">
+                    <div class=" mt-4 ms-4">
+                        <h2>
+                            {{ article.title }}
+                        </h2>
+                        <p>
+                            {{ article.content }}
+                        </p>
+                    </div>
+                    <div class=" mt-4 ms-4">
+                        <p>nombre de like : {{ article.likeArticles|length }}</p>
+                        <p>nombre de commentaire : {{ article.comments|length }}</p>
+                    </div>
+                </div>
+            </div>  
+        </a>
         {% endfor %}
     </div>
-    <div class="favorites">
+    <div class="favorites ">
         <div class="favorite-articles">
             <h2>Mes articles favoris</h2>
             {% for article in favoriteArticles %}
-            <div class="favorite-item">{{ article }}</div>
+            <a href="{{ path('article_show', {id: article.id}) }}" class="link-card">
+                <div class="article-detail mt-4">
+                    <div>
+                        {%  set num = random([1,2,3,4]) %}
+                        {% if num == 1 %}
+                            {% set url = 'images/c1.jpeg' %}
+                        {% elseif num == 2 %}
+                            {% set  url = 'images/c2.jpeg' %}
+                        {% elseif num == 3 %}
+                            {% set url = 'images/c3.jpeg' %}
+                        {% elseif num == 4 %}
+                            {% set url = 'images/c4.jpeg' %}
+
+                        {% endif %}
+                        <img src=" {{ asset(url) }} " class='card-img-home' alt="">
+                    </div>
+                    <div class="">
+                        <div class=" mt-4 ms-4">
+                            <h3>
+                                {{ article.title }}
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </a>
             {% endfor %}
         </div>
-        <div class="favorite-authors">
-            <h2>Mes auteurs favoris</h2>
+        <div class="favorite-authors ">
+            <h2 class="">Mes auteurs favoris</h2>
             {% for author in favoriteAuthors %}
-            <div class="favorite-item">{{ author }}</div>
+                <div class="article-detail mt-4">
+                    <div>
+                        {%  set num = random([1,2,3,4]) %}
+                        {% if num == 1 %}
+                            {% set url = 'images/p1.jpeg' %}
+                            {% set firstName = 'Monica' %}
+                        {% elseif num == 2 %}
+                            {% set  url = 'images/p2.jpeg' %}
+                            {% set  firstName = 'Jessica' %}
+                        {% elseif num == 3 %}
+                            {% set url = 'images/p3.jpeg' %}
+                            {% set firstName = 'Nathasha' %}
+                        {% elseif num == 4 %}
+                            {% set url = 'images/p4.jpeg' %}
+                            {% set firstName = 'Lisa' %}
+                        {% endif %}
+                        <img src=" {{ asset(url) }} " class='card-img-home' alt="">
+                    </div>
+                    <div class="">
+                        <div class=" mt-4 ms-4">
+                            <h3>
+                                {{ firstName }}
+                            </h3>
+                        </div>
+                    </div>
+                </div>
             {% endfor %}
         </div>
     </div>

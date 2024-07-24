@@ -4,18 +4,18 @@
 
 {% block body %}
 <div class="container">
-    <button class="create-article-btn">Créer un article</button>
+    <a href= "{{ path('article_new')  }}" class="btn btn-primary mt-4">Créer un article</a>
     <div class="my-articles">
         <h2>Mes articles</h2>
         {% for article in articles %}
         <div class="article-card">
             <div class="article-info">
                 <h3>{{ article.title }}</h3>
-                <p>{{ article.date }}</p>
+                  <p>{{  article.createdAt|format_datetime(locale='FR') }} </p>
             </div>
             <div class="article-stats">
-                <p>nombre de like : {{ article.likes }}</p>
-                <p>nombre de commentaire : {{ article.comments }}</p>
+                <p>nombre de like : {{ article.likeArticles|length }}</p>
+                <p>nombre de commentaire : {{ article.comments|length }}</p>
             </div>
         </div>
         {% endfor %}

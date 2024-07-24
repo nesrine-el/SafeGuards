@@ -10,6 +10,7 @@ use App\Form\ArticleType;
 use App\Form\CommentType;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\ArticleRepository;
+use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -72,12 +73,13 @@ class ArticleController extends AbstractController
     }
 
 
-    #[Route('/article/new', name: 'new')]
+    #[Route('/article/new', name: 'article_new')]
     #[IsGranted('new')]
-    public function new(Request $request, ArticleRepository $articleRepository): Response
+    public function new(Request $request, ArticleRepository $articleRepository, EntityManagerInterface $em): Response
     {
 
         $article = new Article();
+        $user = $this->getUser();
 
         $form = $this->createForm(ArticleType::class, $article);
 
@@ -86,10 +88,13 @@ class ArticleController extends AbstractController
             // $form->getData() holds the submitted values
             // but, the original `$task` variable has also been updated
             $article = $form->getData();
+            $article->setCreatedAt(new \DateTime( 'now ' ));
+            $article->setUser($user);
+            $em->persist($article);
+            $em->flush();
 
-            // ... perform some action, such as saving the task to the database
+            return $this->redirectToRoute('article_show', ['id' => $article->getId()]);
 
-            return $this->redirectToRoute('templates/article/new.html.twig');
         }
 
       

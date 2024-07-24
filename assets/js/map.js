@@ -1,22 +1,22 @@
 
 
-if (document.location.href == "http://127.0.0.1:8000/" || document.location.href.includes("http://127.0.0.1:8000/?")  ) {
+if (document.location.href == "http://127.0.0.1:8000/" || document.location.href.includes("http://127.0.0.1:8000/?") || document.location.href.includes("http://127.0.0.1:8000/map") || document.location.href.includes("http://127.0.0.1:8000/earthquake") ) {
     
-    var map = L.map('map').setView([0, 0],200);
+    let map = L.map('map').setView([0, 0],200);
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 5,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map); 
 
-    var legend = L.control({position: 'topright'});
+    let legend = L.control({position: 'topright'});
     legend.onAdd = function (map) {
 
-    var div = L.DomUtil.create('div', 'map-legend');
-    var labels = ['<strong>Magnétude</strong>'];
-    var titleMagnetude = ['< 2','> 2','> 4','> 6'];
-    var titleColor = ['yellow','orange','red','purple'];
+    let div = L.DomUtil.create('div', 'map-legend');
+    let labels = ['<strong>Magnétude</strong>'];
+    let titleMagnetude = ['< 2','> 2','> 4','> 6'];
+    let titleColor = ['yellow','orange','red','purple'];
 
-    for (var i = 0; i < titleMagnetude.length; i++) {
+    for (let i = 0; i < titleMagnetude.length; i++) {
 
             div.innerHTML += 
             labels.push(
@@ -50,7 +50,7 @@ if (document.location.href == "http://127.0.0.1:8000/" || document.location.href
                 coeff = 12;
             }
             
-            var circle = L.circle([earthquake["latitude"], earthquake["longitude"]], {
+            let circle = L.circle([earthquake["latitude"], earthquake["longitude"]], {
                 color: color,
                 fillColor: color,
                 fillOpacity: 0.4,
@@ -58,12 +58,12 @@ if (document.location.href == "http://127.0.0.1:8000/" || document.location.href
             }).addTo(map).on("click", circleClick);
 
             function circleClick(e) {
-                var clickedCircle = e.target;
+                let clickedCircle = e.target;
                 console.log(img_path);
               clickedCircle.bindPopup(`
               <h3>Tremblement de terre</h3>
               <div class='d-flex justify-content-center'> 
-                <img src=  ${document.getElementById("img_path").value} />
+               <img src=  ${document.getElementById("img_path").value} />
               </div> 
               <p>La magnétude de ce tremblement de terre est de ${earthquake["mag"]} sur l'échelle de Reichter. </p>
               <a class='btn btn-primary' style='color:white' href="http://127.0.0.1:8000/earthquake/${earthquake["id"]}">Voir en détail</a>

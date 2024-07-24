@@ -19,6 +19,7 @@
                 <a href="{{ path('login') }}">Connexion</a>
             {% else %}
                 <a href="{{ path('user_dashboard', { 'id': app.user.id }) }}">Mon dashboard</a>
+                <a href="{{ path('app_logout') }}">Se déconnecter</a>
             {% endif %}
         </div>
 </div>

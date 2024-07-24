@@ -35,7 +35,7 @@ class EarthquakeController extends AbstractController
     {
         $articles = $articleRepository->findAll();
 
-        // dd($articles);
+         
 
         return $this->render('earthquake/show.html.twig', [
             'earthquake' => $earthquake,

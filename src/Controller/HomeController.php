@@ -39,5 +39,17 @@ class HomeController extends AbstractController
             'likedarticles' => $MostLikedArticles,
 
         ]);
-     }
+
+    }
+   
+   #[Route('/api/doc', name: 'doc_api')]
+    public function doc(): Response
+    {
+     
+        return $this->render('api/doc.html.twig', [
+           'controller_name' => 'HomeController',
+        ]);
+    }
+
 }
+

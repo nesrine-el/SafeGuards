@@ -6,7 +6,7 @@
 
 {% block body %}
 	<div class="container">
-		<h1>Titre de l'Article</h1>
+		<h1 class='my-4'>{{ article.title }}</h1>
 		{% for message in app.flashes('success') %}
 			<div class="alert alert-success">
 				{{ message }}
@@ -31,7 +31,7 @@
 					{% set url = 'images/c4.jpeg' %}
 
 				{% endif %}
-				<img src=" {{ asset(url) }} " class='afaire' alt="">
+				<img src=" {{ asset(url) }} " class='card-img-article-show' alt="">
 			</div>
 			<div class=" mt-4 ms-4">
 				<h2>

@@ -15,10 +15,16 @@ class DashboardController extends AbstractController
     {
         $user = $entityManager->getRepository(User::class)->find($id);
         $articles = $user->getArticles();
+        $likes = $user->getLikeArticles();
+        $favoriteArticles = [];
+        foreach ($likes as $key => $like) {
+            $favoriteArticles[]= $like->getArticle();
+        }
+
+
         
 
 
-        $favoriteArticles = ['Article 1', 'Article 2', 'Article 3'];
         $favoriteAuthors = ['Auteur 1', 'Auteur 2', 'Auteur 3'];
 
         return $this->render('dashboard/index.html.twig', [

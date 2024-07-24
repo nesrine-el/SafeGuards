@@ -9,16 +9,18 @@
 </div>
 <section>
 	<!-- Jauge de l'intensité -->
-	<div>
-
-		<div class="jauge container py-4 ">
+	<div >
+		
+		<div class="jauge container  py-4 ">
+			
 			<div class="jauge__part-1">
 				<span class="jauge__part-1__item">0</span>
 				<span class="jauge__part-1__item">3</span>
 				<span class="jauge__part-1__item">6</span>
 				<span class="jauge__part-1__item">9</span>
 			</div>
-			<div class="jauge__part-2">
+			<div class="jauge__part-2 position-relative ">
+				<div class='position-absolute left-50' id='barre' data-mag = "{{earthquake.mag }}" ></div>
 				<div style="background-color: #198754;" data-value="vert"></div>
 				<div style="background-color: #fd7e14;" data-value="orange"></div>
 				<div style="background-color: #dc3545;" data-value="rouge"></div>

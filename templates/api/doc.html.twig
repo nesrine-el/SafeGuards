@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Documentation
+{% endblock %}
+{% block body %}
+	<div class="container ">
+		<h1 class="my-4">Documentations API</h1>
+		<p class="mb-4">
+			Il y a à peu près les 10 000 derniers earthquakes qui se sont produits.
+		</p>
+		<p class="mb-4">
+                    Pour accéder à la route d'earthquake index, qui est paginée à 1000 articles, il est nécessaire de spécifier 
+			        le numéro de la page souhaitée en utilisant l'attribut "?page=".
+			        Exemple de requête pour accéder à la page 5 :	
+			            "api/earthquakes?page=5"
+		</p>
+        <a href="{{path('app_api_earthquakes')}}" class="mb-4">Lien vers Api index</a>
+		<p class="mt-5 mb-4">
+			Pour accéder à la route d'earthquake show, il est nécessaire de spécifier le id de l'earthquake souhaitée .
+			Exemple de requête pour accéder à l'earthquake 321:
+						"api/earthquakes/321"
+		</p>
+            <a href="{{path('app_api_earthquakes_show',{id:400})}}" class="mb-4">Lien vers Api Show</a>
+	</div>
+{% endblock %}

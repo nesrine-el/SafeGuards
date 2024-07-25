@@ -34,7 +34,7 @@ class Earthquake
     private ?string $depth = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(['earthquakes.show'])]
+    #[Groups(['earthquakes.index'])]
     private ?string $mag = null;
 
     #[ORM\Column(name: 'magType', length: 255, nullable: true)]

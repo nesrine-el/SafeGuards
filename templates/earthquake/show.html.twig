@@ -3,7 +3,8 @@
 {% block title %}{% endblock %}
 
 {% block body %}
-	<input id='idEarthquake' hidden value={{ earthquake.id }}></input>
+<input type="hidden" id="img_path" value="{{ asset('images/tremblementDeTerre.jpeg') }}">
+<input id='idEarthquake' hidden value={{ earthquake.id }}></input>
 <div class="titre text-center  text-light">
 	<h1 class='mt-4'>Catastrophe</h1>
 </div>

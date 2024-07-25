@@ -1,6 +1,13 @@
+let path;
+if (document.location.href.includes("http://127.0.0.1:8000")) {
+    path = 'http://127.0.0.1:8000';
+} else {
+    path = 'http://www.safeguards.aah.ovh';
+}
 
 
-if (document.location.href == "http://127.0.0.1:8000/" || document.location.href.includes("http://127.0.0.1:8000/?") || document.location.href.includes("http://127.0.0.1:8000/map") || document.location.href.includes("http://127.0.0.1:8000/earthquake") ) {
+
+if (document.location.href == `${path}/` || document.location.href.includes(`${path}/?`) || document.location.href.includes(`${path}/map`) || document.location.href.includes(`${path}/earthquake`) ) {
     
     let lat = document.getElementById('map').dataset.lat ? parseFloat(document.getElementById('map').dataset.lat) : 0
     let long = document.getElementById('map').dataset.long ? parseFloat(document.getElementById('map').dataset.long) : 0
@@ -34,7 +41,7 @@ if (document.location.href == "http://127.0.0.1:8000/" || document.location.href
 
     // recuperer donnees de la page api/earthquakes
     async function fetchAndDisplayEarthquakes() {
-        const reponse = await fetch("http://127.0.0.1:8000/api/earthquakes");
+        const reponse = await fetch(`${path}/api/earthquakes`);
         const earthquakes = await reponse.json();
         earthquakes.forEach(earthquake => {
             
@@ -70,7 +77,7 @@ if (document.location.href == "http://127.0.0.1:8000/" || document.location.href
                <img src=  ${document.getElementById("img_path").value} />
               </div> 
               <p>La magnétude de ce tremblement de terre est de ${earthquake["mag"]} sur l'échelle de Reichter. </p>
-              <a class='btn btn-primary' style='color:white' href="http://127.0.0.1:8000/earthquake/${earthquake["id"]}">Voir en détail</a>
+              <a class='btn btn-primary' style='color:white' href="${path}/earthquake/${earthquake["id"]}">Voir en détail</a>
               `)
               .openPopup();
             }
@@ -83,7 +90,7 @@ if (document.location.href == "http://127.0.0.1:8000/" || document.location.href
 
     // recuperer la prediction de la page api/earthquakes/prediction/lat/$lat/long/$long
     async function fetchAndDisplayPredictions(lat ,long, e) {
-        const reponse = await fetch(`http://127.0.0.1:8000/api/earthquakes/prediction/lat/${lat}/long/${long}`);
+        const reponse = await fetch(`${path}/api/earthquakes/prediction/lat/${lat}/long/${long}`);
         const prediction = await reponse.json();
         popup
         .setLatLng(e.latlng)

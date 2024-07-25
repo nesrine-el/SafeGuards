@@ -34,22 +34,27 @@ class Earthquake
     private ?string $depth = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(['earthquakes.index'])]
+    #[Groups(['earthquakes.show'])]
     private ?string $mag = null;
 
     #[ORM\Column(name: 'magType', length: 255, nullable: true)]
+    #[Groups(['earthquakes.show'])]
     private ?string $magType = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Groups(['earthquakes.show'])]
     private ?string $nst = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Groups(['earthquakes.show'])]
     private ?string $gap = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Groups(['earthquakes.show'])]
     private ?string $dmin = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 11, scale: 10, nullable: true)]
+    #[Groups(['earthquakes.show'])]
     private ?string $rms = null;
 
     #[ORM\Column(length: 2, nullable: true)]

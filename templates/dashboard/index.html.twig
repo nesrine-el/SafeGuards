@@ -30,7 +30,9 @@
                             {{ article.title }}
                         </h2>
                         <p>
-                            {{ article.content }}
+ 
+                            {{ article.content | raw  }}
+
                         </p>
                     </div>
                     <div class=" mt-4 ms-4">

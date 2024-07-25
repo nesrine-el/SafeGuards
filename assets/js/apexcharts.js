@@ -1,5 +1,10 @@
 import ApexCharts from 'apexcharts';
-
+let path;
+if (document.location.href.includes("http://127.0.0.1:8000")) {
+    path = 'http://127.0.0.1:8000';
+} else {
+    path = 'http://www.safeguards.aah.ovh';
+}
 function haversineDistance(lat1, lon1, lat2, lon2) {
     const R = 6371; // Rayon de la Terre en kilomètres
     const dLat = (lat2 - lat1) * (Math.PI / 180);
@@ -15,7 +20,8 @@ async function fetchAndDisplayEarthquakes() {
     document.addEventListener('DOMContentLoaded', async function () {
         let idE = document.getElementById('idEarthquake');
         console.log(idE.value);
-        const response = await fetch("http://127.0.0.1:8000/api/earthquakes");
+        
+        const response = await fetch(`${path}/api/earthquakes`) ;
         const earthquakes = await response.json();
 
         // Séisme central récupéré dynamiquement
